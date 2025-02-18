@@ -21,17 +21,3 @@ body{
   color: ${cores.branco};
 }
 `
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f4f4f4;
-`;
-
-export const Title = styled.h1`
-  color: #4CAF50;
-  font-size: 2rem;
-`;

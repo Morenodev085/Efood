@@ -1,13 +1,12 @@
-import React from 'react';
-import { EstiloGlobal, Container } from './styles';
+import { EstiloGlobal, } from './styles';
 import Header from './compontens/hader';
 
 function App() {
   return (
-    <Container className="App">
-      <EstiloGlobal />
-      <Header />
-    </Container>
+    <>
+    <EstiloGlobal />
+    <h1>ola mundo</h1>
+    </>
   );
 }
 
