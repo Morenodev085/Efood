@@ -1,4 +1,4 @@
-import { createGlobalStyle, styled } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 
 export const cores = {
@@ -18,6 +18,6 @@ export const EstiloGlobal = createGlobalStyle`
 
 body{
   background-color: ${cores.creme};
-  color: ${cores.branco};
+  color: ${cores.vermelho};
 }
 `
