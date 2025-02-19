@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 
 export const cores = {
@@ -21,4 +21,8 @@ body{
   background-color: ${cores.corDeFundo};
   color: ${cores.vermelho};
 }
+`
+export const Logo = styled.img`
+    margin-top: 40px;
+    margin-bottom: 64px;
 `

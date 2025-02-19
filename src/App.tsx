@@ -1,5 +1,6 @@
 import Header from './compontens/header';
 import ListaDeProdutos from './compontens/listaProdutos';
+import RodaPe from './compontens/rodape';
 import { EstiloGlobal, } from './styles';
 
 
@@ -11,6 +12,7 @@ function App() {
     <div>
       <Header />
       <ListaDeProdutos />
+      <RodaPe />
     </div>
     </>
   );
