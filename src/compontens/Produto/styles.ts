@@ -6,7 +6,8 @@ export const CardProduto = styled.div`
   max-width:  472px;
   background-color: ${cores.branco};
   border: 1px solid ${cores.vermelho};
-
+  word-wrap: break-word;
+  overflow: hidden;
 `
 export const LinhaTitutlo = styled.div`
   display: flex;
@@ -41,5 +42,5 @@ export const Btn = styled.button`
   border: none;
   margin-bottom: 4px;
   margin-left: 8px;
-
+  flex-shrink: 0;
 `
