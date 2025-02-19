@@ -1,4 +1,5 @@
 import Header from './compontens/header';
+import ListaDeProdutos from './compontens/listaProdutos';
 import { EstiloGlobal, } from './styles';
 
 
@@ -9,6 +10,7 @@ function App() {
     <EstiloGlobal />
     <div>
       <Header />
+      <ListaDeProdutos />
     </div>
     </>
   );
