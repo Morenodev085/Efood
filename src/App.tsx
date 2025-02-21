@@ -3,6 +3,8 @@ import Header from './compontens/header';
 import ListaDeProdutos from './compontens/listaProdutos';
 import RodaPe from './compontens/rodape';
 import { EstiloGlobal, } from './styles';
+import Banner from './compontens/banner';
+import HeaderRestaurante from './compontens/header copy';
 
 const rotas = createBrowserRouter([
   {
@@ -19,7 +21,9 @@ const rotas = createBrowserRouter([
     path: '/italiano',
     element:
       <>
-
+        <HeaderRestaurante />
+        <Banner />
+        <RodaPe />
       </>
   }
 ])
