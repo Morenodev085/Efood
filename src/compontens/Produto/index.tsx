@@ -1,27 +1,29 @@
-import { CardProduto, TitutloCard, DescricaoCard, Btn, LinhaTitutlo, Nota } from "./styles"
+import { CardProduto, TitutloCard, DescricaoCard, Btn, LinhaTitutlo, NotaP } from "./styles"
 import { CiStar } from "react-icons/ci";
 
 
 
-const Props = {
-
+type Props = {
+titulo: string,
+Nota: number,
+descricao: string,
+to?: string
 }
 
-const Produto = () => {
+const Produto = ({titulo, Nota, descricao, to}: Props ) => {
   return (
     <CardProduto>
-      <img src="https://pixabay.com/pt/photos/sushi-rolos-de-sushi-4956246/" alt="" />
+      <img src="https://pixabay.com/get/g2f9e1e3adfc8474e_1280.jpg" alt={titulo} />
       <LinhaTitutlo>
-        <TitutloCard>titutlo</TitutloCard>
-        <Nota>
-          4.9 <CiStar />
-        </Nota>
+        <TitutloCard>{titulo}</TitutloCard>
+        <NotaP>
+          {Nota} <CiStar />
+        </NotaP>
       </LinhaTitutlo>
-      <DescricaoCard>
-        Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.
-        Experimente o Japão sem sair do lar com nosso delivery!
+      <DescricaoCard>c
+        {descricao}
       </DescricaoCard>
-      <Btn >Saiba mais </Btn>
+      <Btn to={to}>Saiba mais </Btn>
     </CardProduto>
   )
 }

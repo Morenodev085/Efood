@@ -1,19 +1,34 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Header from './compontens/header';
 import ListaDeProdutos from './compontens/listaProdutos';
 import RodaPe from './compontens/rodape';
 import { EstiloGlobal, } from './styles';
 
+const rotas = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <>
+        <Header />
+        <ListaDeProdutos />
+        <RodaPe />
+      </>
+    )
+  },
+  {
+    path: '/italiano',
+    element:
+      <>
 
+      </>
+  }
+])
 
 function App() {
   return (
     <>
-    <EstiloGlobal />
-    <div>
-      <Header />
-      <ListaDeProdutos />
-      <RodaPe />
-    </div>
+      <EstiloGlobal />
+      <RouterProvider router={rotas} />
     </>
   );
 }

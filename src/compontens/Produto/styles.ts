@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { cores } from "../../styles";
+import { Link } from "react-router-dom";
 
 export const CardProduto = styled.div`
   max-height: 181px;
@@ -18,9 +19,10 @@ export const TitutloCard = styled.h3`
   margin-bottom: 8px;
   margin-right: 64px;
   margin-left: 8px;
+  white-space: nowrap;
 
 `
-export const Nota = styled.p`
+export const NotaP = styled.p`
 display: flex;
   justify-content: flex-end;  /* Certifique-se de que o container do Nota seja flex */
   font-weight: bold;
@@ -34,7 +36,7 @@ export const DescricaoCard = styled.p`
   margin-left: 8px;
 
 `
-export const Btn = styled.button`
+export const Btn = styled(Link)`
   background-color: ${cores.vermelho};
   width: 82px;
   height: 24px;
