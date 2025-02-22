@@ -1,9 +1,13 @@
-import { ContainerBanner, TituloBanner } from "./style"
+import React from "react"
+import { Categoria, ContainerBanner, InfoBanner, TituloBanner } from "./style"
 
 const Banner = () => {
-  return(
+  return (
     <ContainerBanner>
-      <TituloBanner>La Dolce Vita Trattoria</TituloBanner>
+      <InfoBanner>
+        <Categoria>Italiano</Categoria>
+        <TituloBanner>La Dolce Vita Trattoria</TituloBanner>
+      </InfoBanner>
     </ContainerBanner>
   )
 }

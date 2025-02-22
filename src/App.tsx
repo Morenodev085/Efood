@@ -4,7 +4,7 @@ import ListaDeProdutos from './compontens/listaProdutos';
 import RodaPe from './compontens/rodape';
 import { EstiloGlobal, } from './styles';
 import Banner from './compontens/banner';
-import HeaderRestaurante from './compontens/header copy';
+import HeaderRestaurante from './compontens/header2';
 
 const rotas = createBrowserRouter([
   {

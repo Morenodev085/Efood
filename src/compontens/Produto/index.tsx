@@ -20,7 +20,7 @@ const Produto = ({titulo, Nota, descricao, to}: Props ) => {
           {Nota} <CiStar />
         </NotaP>
       </LinhaTitutlo>
-      <DescricaoCard>c
+      <DescricaoCard>
         {descricao}
       </DescricaoCard>
       <Btn to={to}>Saiba mais </Btn>
