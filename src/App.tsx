@@ -5,6 +5,7 @@ import RodaPe from './compontens/rodape';
 import { EstiloGlobal, } from './styles';
 import Banner from './compontens/banner';
 import HeaderRestaurante from './compontens/header2';
+import CardapioRestaurante from './compontens/cardapioRestaurante';
 
 const rotas = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const rotas = createBrowserRouter([
       <>
         <HeaderRestaurante />
         <Banner />
+        <CardapioRestaurante />
         <RodaPe />
       </>
   }
