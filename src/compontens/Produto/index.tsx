@@ -1,5 +1,5 @@
 import { CardProduto, TitutloCard, DescricaoCard, Btn, LinhaTitutlo, NotaP } from "./styles"
-import { CiStar } from "react-icons/ci";
+import { FaStar } from "react-icons/fa";
 
 
 
@@ -17,7 +17,7 @@ const Produto = ({titulo, Nota, descricao, to}: Props ) => {
       <LinhaTitutlo>
         <TitutloCard>{titulo}</TitutloCard>
         <NotaP>
-          {Nota} <CiStar />
+          {Nota}<FaStar />
         </NotaP>
       </LinhaTitutlo>
       <DescricaoCard>
