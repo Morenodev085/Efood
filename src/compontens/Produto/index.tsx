@@ -7,7 +7,7 @@ type Props = {
 titulo: string,
 Nota: number,
 descricao: string,
-to?: string
+to: string
 }
 
 const Produto = ({titulo, Nota, descricao, to}: Props ) => {
