@@ -1,40 +1,14 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Header from './compontens/header';
-import ListaDeProdutos from './compontens/listaProdutos';
-import RodaPe from './compontens/rodape';
-import { EstiloGlobal, } from './styles';
-import Banner from './compontens/banner';
-import HeaderRestaurante from './compontens/header2';
-import CardapioRestaurante from './compontens/cardapioRestaurante';
+import { RouterProvider } from 'react-router-dom';
 
-const rotas = createBrowserRouter([
-  {
-    path: '/',
-    element: (
-      <>
-        <Header />
-        <ListaDeProdutos />
-        <RodaPe />
-      </>
-    )
-  },
-  {
-    path: '/italiano',
-    element:
-      <>
-        <HeaderRestaurante />
-        <Banner />
-        <CardapioRestaurante />
-        <RodaPe />
-      </>
-  }
-])
+import { EstiloGlobal, } from './styles';
+
+import Rotas from './rotas'
 
 function App() {
   return (
     <>
       <EstiloGlobal />
-      <RouterProvider router={rotas} />
+      <RouterProvider router={Rotas} />
     </>
   );
 }
