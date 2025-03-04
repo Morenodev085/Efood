@@ -1,4 +1,4 @@
-import CartRestaurante from "../cardRestaurante"
+import CartRestaurante from "../CardProduto"
 import { ListaRestaurante } from "./styles"
 
 

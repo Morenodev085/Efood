@@ -6,16 +6,15 @@ max-height: 338px;
 max-width: 320px;
 background-color: ${cores.vermelho};
 color: ${cores.branco};
-
 `
 
 export const ImgCardapio = styled.img`
   height: 167px;
   width: 304px;
-  margin-bottom: 167px; //ja que a imagam nao carrega de forma nenhuma dei esse espaco apra saner como seria com a imgaem ness espaco
+  margin-top: 8px;
 `
 
-export const TitutloCardRestaurante = styled.h3`
+export const TituloCardRestaurante = styled.h3`
   font-size: 16px;
   margin-bottom: 8px;
   margin-top: 4px;
@@ -89,7 +88,7 @@ margin-bottom: 16px;
   }
   `
 
-export const ConponemteMOdal = styled.div`
+export const ConponenteModal = styled.div`
 background-color: ${cores.vermelho};
 position: relative;
 z-index: 1;
