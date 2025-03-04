@@ -88,7 +88,7 @@ margin-bottom: 16px;
   }
   `
 
-export const ConponenteModal = styled.div`
+export const ComponenteModal = styled.div`
 background-color: ${cores.vermelho};
 position: relative;
 z-index: 1;
