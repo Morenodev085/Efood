@@ -19,6 +19,7 @@ export const ListaLinks = styled.ul`
 export const Link = styled.li`
   font-size: 24px;
   margin-left: 8px;
+  color: ${cores.vermelho};
 `
 export const InfoRodape = styled.h4`
   font-size: 10px;
