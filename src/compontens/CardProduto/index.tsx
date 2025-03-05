@@ -2,51 +2,60 @@ import { useState } from "react";
 import { BotaoCardapio, CardDoRestaurante, CartMais,
   DescricaoCardRestaurante, ImgCardapio,
   TituloCardRestaurante, ComponenteModal } from "./styled";
+import useFetchRestaurantes from '../../Api';
 
 const CardRestaurante = () => {
+  const { restaurantes } = useFetchRestaurantes();  // Pega os dados da API
   const [visivel, setVisivel] = useState(false);
+  const [produtoSelecionado, setProdutoSelecionado] = useState(null);  // Para armazenar o produto selecionado
 
-  // Função para abrir a modal
-  const abrirModal = () => setVisivel(true);
+  // Função para abrir a modal e selecionar o produto
+  const abrirModal = (produto) => {
+    setProdutoSelecionado(produto);
+    setVisivel(true);
+  };
 
   // Função para fechar a modal
   const fecharModal = () => setVisivel(false);
 
   return (
-    <>
-      {/* Card do restaurante */}
-      <CardDoRestaurante>
-        <ImgCardapio src="https://placehold.co/1024x708" alt="Pizza Marguerita" />
-        <TituloCardRestaurante>Pizza Marguerita</TituloCardRestaurante>
-        <DescricaoCardRestaurante>
-          A clássica Marguerita: molho de tomate suculento, mussarela derretida,
-          manjericão fresco e um toque de azeite. Sabor e simplicidade!
-        </DescricaoCardRestaurante>
-        <BotaoCardapio onClick={abrirModal}>Saiba mais</BotaoCardapio>
-      </CardDoRestaurante>
+    <div>
+      {/* Iterar sobre os restaurantes para gerar os cards */}
+      {restaurantes && restaurantes.length > 0 ? (
+        restaurantes.map((restaurante) => (
+          restaurante.cardapio.map((produto) => (
+            <CardDoRestaurante key={produto.id}>
+              <ImgCardapio src={produto.foto || "https://placehold.co/1024x708"} alt={produto.nome} />
+              <TituloCardRestaurante>{produto.nome}</TituloCardRestaurante>
+              <DescricaoCardRestaurante>
+                {produto.descricao}
+              </DescricaoCardRestaurante>
+              <BotaoCardapio onClick={() => abrirModal(produto)}>Saiba mais</BotaoCardapio>
+            </CardDoRestaurante>
+          ))
+        ))
+      ) : (
+        <p>Carregando restaurantes...</p>  // Exibe uma mensagem de carregamento se os dados não estiverem disponíveis
+      )}
 
       {/* Modal de mais informações */}
-      <CartMais className={visivel ? "visivel" : ""}>
-        <ComponenteModal className="container">
-          <div>
-            <ImgCardapio src="https://placehold.co/1024x708" alt="Pizza Marguerita - Detalhe" />
-          </div>
-          <div className="Infocard">
-            <TituloCardRestaurante>Pizza Marguerita</TituloCardRestaurante>
-            <p>
-              A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável.
-              Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade,
-              manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e
-              ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo.
-              É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.
-            </p>
-            <p>Serve: de 2 a 3 pessoas</p>
-            <BotaoCardapio className="BotaoModal">Adicionar ao carrinho</BotaoCardapio>
-          </div>
-        </ComponenteModal>
-        <div className="overlay" onClick={fecharModal}></div>
-      </CartMais>
-    </>
+      {produtoSelecionado && (
+        <CartMais className={visivel ? "visivel" : ""}>
+          <ComponenteModal className="container">
+            <div>
+              <ImgCardapio src={produtoSelecionado.foto || "https://placehold.co/1024x708"} alt={produtoSelecionado.nome} />
+            </div>
+            <div className="Infocard">
+              <TituloCardRestaurante>{produtoSelecionado.nome}</TituloCardRestaurante>
+              <p>{produtoSelecionado.descricao}</p>
+              <p>Serve: {produtoSelecionado.porcao}</p>
+              <BotaoCardapio className="BotaoModal">Adicionar ao carrinho</BotaoCardapio>
+            </div>
+          </ComponenteModal>
+          <div className="overlay" onClick={fecharModal}></div>
+        </CartMais>
+      )}
+    </div>
   );
 };
 

@@ -26,6 +26,56 @@ const Rotas = createBrowserRouter([
         <CardapioRestaurante />
         <RodaPe />
       </>
+  },
+  {
+    path: '/árabe',
+    element:
+      <>
+        <HeaderRestaurante />
+        <Banner />
+        <CardapioRestaurante />
+        <RodaPe />
+      </>
+  },
+  {
+    path: '/japonês',
+    element:
+      <>
+        <HeaderRestaurante />
+        <Banner />
+        <CardapioRestaurante />
+        <RodaPe />
+      </>
+  },
+  {
+    path: '/português',
+    element:
+      <>
+        <HeaderRestaurante />
+        <Banner />
+        <CardapioRestaurante />
+        <RodaPe />
+      </>
+  },
+  {
+    path: '/pizzaria',
+    element:
+      <>
+        <HeaderRestaurante />
+        <Banner />
+        <CardapioRestaurante />
+        <RodaPe />
+      </>
+  },
+  {
+    path: '/vegano',
+    element:
+      <>
+        <HeaderRestaurante />
+        <Banner />
+        <CardapioRestaurante />
+        <RodaPe />
+      </>
   }
 ])
 

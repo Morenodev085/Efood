@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { cores } from "../../styles";
 
 export const CardDoRestaurante = styled.div`
-max-height: 338px;
+height: auto;
 max-width: 320px;
 background-color: ${cores.vermelho};
 color: ${cores.branco};

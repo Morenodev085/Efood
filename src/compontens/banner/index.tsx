@@ -2,6 +2,9 @@ import React from "react"
 import { Categoria, ContainerBanner, InfoBanner, TituloBanner } from "./style"
 
 const Banner = () => {
+
+
+
   return (
     <ContainerBanner>
       <InfoBanner>

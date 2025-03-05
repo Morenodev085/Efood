@@ -1,38 +1,16 @@
 import { useEffect, useState } from "react";
 import Produto from "../Produto"
 import { ListaProduto } from "./style"
+import useFetchRestaurantes from '../../Api'
 
 
 const ListaDeProdutos = () => {
 
-type Restaurantes = {
-  id: number;
-  titulo: string;
-  destaque?: boolean
-  tipo: string
-  avaliacao: number
-  descricao: string
-  cardapio: {
-    foto: string
-    preco: number
-    id: number
-    nome: string
-    descricao: string
-    porcao: string
-  }
-}
-
-const [cardapio, setCardapio] =useState<Restaurantes[]>([])
-
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-    .then((res) => res.json())
-    .then((data) => setCardapio(data))
-  },[])
+  const { restaurantes } = useFetchRestaurantes();
 
   return (
     <ListaProduto>
-      {cardapio.map((restaurante) => (
+      {restaurantes.map((restaurante) => (
         <Produto
           key={restaurante.id} // Garantir que cada item tenha uma chave única
           to={`/${restaurante.tipo}`} // Se necessário, altere para o link correto
