@@ -11,8 +11,8 @@ const ListaDeProdutos = () => {
   return (
     <ListaProduto>
       {restaurantes.map((restaurante) => (
-        <Produto
 
+        <Produto
           key={restaurante.id} // Garantir que cada item tenha uma chave única
           to={`/${restaurante.tipo}`} // Se necessário, altere para o link correto
           Nota={restaurante.avaliacao} // Exibindo a avaliação de cada restaurante
@@ -20,6 +20,7 @@ const ListaDeProdutos = () => {
           descricao={restaurante.descricao} // Exibindo a descrição do restaurante
         />
       ))}
+      <h1>Ola mundo </h1>
     </ListaProduto>
   );
 };

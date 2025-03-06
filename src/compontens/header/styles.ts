@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
 
 export const Cabecalho = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   max-width: 2030px;
-  background-color: ${cores.creme} ;
 `
 
 

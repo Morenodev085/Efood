@@ -2,6 +2,7 @@ import useFetchRestaurantes from "../../Api";
 import { CardProduto, TitutloCard, DescricaoCard, Btn, LinhaTitutlo, NotaP } from "./styles"
 import { FaStar } from "react-icons/fa";
 
+import apresentacao from '../../assets/apresentacao.png'
 
 
 type Props = {
@@ -15,7 +16,7 @@ const Produto = ({titulo, Nota, descricao, to}: Props ) => {
 
   return (
     <CardProduto>
-      <img src='https://placehold.co/472x217' alt={titulo} />
+      <img src={apresentacao} alt={titulo} />
       <LinhaTitutlo>
         <TitutloCard>{titulo}</TitutloCard>
         <NotaP>

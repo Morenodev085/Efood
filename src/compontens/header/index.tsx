@@ -1,10 +1,13 @@
 import { Logo } from "../../styles"
 import { Cabecalho, TituloH, } from "./styles"
+import vetor from '../../assets/Vector.png'
+import logo from '../../assets/logo.png'
+
 
 const Header = () => {
   return(
-    <Cabecalho style={{}}>
-      <Logo src='https://via.placeholder.com/125x58' alt="Efood"/>
+    <Cabecalho style={{backgroundImage: `url(${vetor})`}}>
+      <Logo src={logo} alt="Efood"/>
       <TituloH>Viva experiências gastronômicas<br/> no conforto da sua casa</TituloH>
     </Cabecalho>
   )
