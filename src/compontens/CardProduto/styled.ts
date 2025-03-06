@@ -12,6 +12,7 @@ export const ImgCardapio = styled.img`
   height: 167px;
   width: 304px;
   margin-top: 8px;
+  margin-left: 8px;
 `
 
 export const TituloCardRestaurante = styled.h3`

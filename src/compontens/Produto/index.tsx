@@ -1,3 +1,4 @@
+import useFetchRestaurantes from "../../Api";
 import { CardProduto, TitutloCard, DescricaoCard, Btn, LinhaTitutlo, NotaP } from "./styles"
 import { FaStar } from "react-icons/fa";
 
@@ -14,7 +15,7 @@ const Produto = ({titulo, Nota, descricao, to}: Props ) => {
 
   return (
     <CardProduto>
-      <img src="https://pixabay.com/get/g2f9e1e3adfc8474e_1280.jpg" alt={titulo} />
+      <img src='https://placehold.co/472x217' alt={titulo} />
       <LinhaTitutlo>
         <TitutloCard>{titulo}</TitutloCard>
         <NotaP>

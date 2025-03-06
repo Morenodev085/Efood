@@ -3,7 +3,7 @@ import { cores } from "../../styles";
 import { Link } from "react-router-dom";
 
 export const CardProduto = styled.div`
-  max-height: 181px;
+  height: auto;
   max-width:  472px;
   background-color: ${cores.branco};
   border: 1px solid ${cores.vermelho};

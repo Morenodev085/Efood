@@ -34,6 +34,7 @@ const CardapioRestaurante = () => {
     <>
       <ListaRestaurante>
         {cardapio.map((restaurante) => (
+
           <CardRestaurante key={restaurante.id}  />
         ))}
       </ListaRestaurante>
