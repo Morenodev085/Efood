@@ -2,7 +2,7 @@ import { Logo } from "../../styles"
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { ContainerRodape, InfoRodape, Link, ListaLinks } from './styled'
 
-const RodaPe = () => {
+const Rodape = () => {
   return (
     <ContainerRodape>
       <Logo alt="Efood"></Logo>
@@ -22,4 +22,4 @@ const RodaPe = () => {
   )
 }
 
-export default RodaPe
+export default Rodape
