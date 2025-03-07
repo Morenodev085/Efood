@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Produto from "../Produto"
 import { ListaProduto } from "./style"
 import useFetchRestaurantes from '../../Api'
@@ -20,7 +19,6 @@ const ListaDeProdutos = () => {
           descricao={restaurante.descricao} // Exibindo a descrição do restaurante
         />
       ))}
-      <h1>Ola mundo </h1>
     </ListaProduto>
   );
 };
