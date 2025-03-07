@@ -1,11 +1,12 @@
 import { Logo } from "../../styles"
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { ContainerRodape, InfoRodape, Link, ListaLinks } from './styled'
+import logo from '../../assets/logo.png'
 
 const Rodape = () => {
   return (
     <ContainerRodape>
-      <Logo alt="Efood"></Logo>
+      <Logo src={logo} alt="Efood"></Logo>
       <ListaLinks>
         <Link><a href="#" target="_blank" rel="noopener noreferrer">
           <FaFacebook />
