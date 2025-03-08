@@ -1,6 +1,6 @@
 import { Logo } from "../../styles"
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
-import { ContainerRodape, InfoRodape, Link, ListaLinks } from './styled'
+import { ContainerRodape, InfoRodape, Link, ListaLinks } from './styles'
 import logo from '../../assets/logo.png'
 
 const Rodape = () => {
