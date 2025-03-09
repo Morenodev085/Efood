@@ -1,5 +1,5 @@
 import Produto from "../Produto"
-import { ListaProduto } from "./style"
+import { ListaProduto } from "./styles"
 import useFetchRestaurantes from '../../Api'
 
 

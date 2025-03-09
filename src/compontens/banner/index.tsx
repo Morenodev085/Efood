@@ -1,5 +1,5 @@
 import React from "react"
-import { Categoria, ContainerBanner, InfoBanner, TituloBanner } from "./style"
+import { Categoria, ContainerBanner, InfoBanner, TituloBanner } from "./styles"
 
 import apresentacao from '../../assets/apresentacao.png'
 

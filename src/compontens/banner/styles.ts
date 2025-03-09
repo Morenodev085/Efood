@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { cores } from "../../styles";
-import apresentacao from '../../assets/apresentacao.png'
 
 export const ContainerBanner = styled.div`
   max-height: 280px;
