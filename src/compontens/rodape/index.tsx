@@ -8,7 +8,7 @@ const Rodape = () => {
     <ContainerRodape>
       <Logo src={logo} alt="Efood"></Logo>
       <ListaLinks>
-        <Link><a href="#" target="_blank" rel="noopener noreferrer">
+        <Link><a href="https://www.exemplo.com" target="_blank" rel="noopener noreferrer">
           <FaFacebook />
         </a></Link>
         <Link><a href="https://www.exemplo.com" target="_blank" rel="noopener noreferrer">
