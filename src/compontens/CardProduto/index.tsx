@@ -2,12 +2,10 @@ import { useState } from "react";
 import { BotaoCardapio, CardDoRestaurante, CartMais,
   DescricaoCardRestaurante, ImgCardapio,
   TituloCardRestaurante, ComponenteModal } from "./styles";
-  import useFetchRestaurantes from '../../Api'
 import pizza from '../../assets/Pizza.png'
 
 const CardRestaurante = () => {
 
-  const { restaurantes } = useFetchRestaurantes();
 
   const [visivel, setVisivel] = useState(false);
 
