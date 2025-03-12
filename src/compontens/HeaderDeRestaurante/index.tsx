@@ -1,5 +1,5 @@
 import { Logo } from "../../styles"
-import { Cabecalho, NomeDoRestaurate, TituloH, } from "./styles"
+import { Cabecalho, NomeDoRestaurate, } from "./styles"
 import logo from '../../assets/logo.png'
 
 
