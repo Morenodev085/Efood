@@ -1,5 +1,4 @@
 import { CardProduto, TitutloCard, DescricaoCard, Btn, LinhaTitutlo, NotaP } from "./styles"
-import { FaStar } from "react-icons/fa";
 
 import apresentacao from '../../assets/apresentacao.png'
 
@@ -19,7 +18,7 @@ const Produto = ({titulo, Nota, descricao, to}: Props ) => {
       <LinhaTitutlo>
         <TitutloCard>{titulo}</TitutloCard>
         <NotaP>
-          {Nota}<FaStar />
+          {Nota}
         </NotaP>
       </LinhaTitutlo>
       <DescricaoCard>
