@@ -9,13 +9,13 @@ const Rodape = () => {
       <Logo src={logo} alt="Efood"></Logo>
       <ListaLinks>
         <Link><a href="https://www.exemplo.com" target="_blank" rel="noopener noreferrer">
-          <FaFacebook />
+          F
         </a></Link>
         <Link><a href="https://www.exemplo.com" target="_blank" rel="noopener noreferrer">
-          <FaTwitter />
+          X
         </a></Link>
         <Link><a href="https://www.exemplo.com" target="_blank" rel="noopener noreferrer">
-          <FaInstagram />
+          I
         </a></Link>
       </ListaLinks>
       <InfoRodape>A efood é uma plataforma para divulgação de estabelecimentos, a responsabilidade pela entrega, qualidade dos produtos é toda do estabelecimento contratado. </InfoRodape>
