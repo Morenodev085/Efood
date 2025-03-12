@@ -1,4 +1,3 @@
-import useFetchRestaurantes from "../../Api";
 import { CardProduto, TitutloCard, DescricaoCard, Btn, LinhaTitutlo, NotaP } from "./styles"
 import { FaStar } from "react-icons/fa";
 
