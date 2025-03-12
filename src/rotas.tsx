@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Header from "./compontens/Header";
+import Header from "./compontens/Cabecalho";
 import ListaDeProdutos from "./compontens/ListaProdutos";
 import Rodape from "./compontens/Rodape/index";
 import HeaderRestaurante from "./compontens/HeaderDeRestaurante";
