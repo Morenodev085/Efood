@@ -6,6 +6,7 @@ height: auto;
 max-width: 320px;
 background-color: ${cores.vermelho};
 color: ${cores.branco};
+padding-bottom: 20px;
 `
 
 export const ImgCardapio = styled.img`
@@ -28,12 +29,13 @@ export const DescricaoCardRestaurante = styled.p`
 
 export const BotaoCardapio = styled.button`
   width: 90%;
-  margin: 0 auto;
   border: none;
   background-color: ${cores.creme};
   color: ${cores.vermelho};
   display: block;
-  margin-bottom: 8px;
+width: 304px;
+font-weight: bold;
+margin-left: 8px;
 `
 export const CartMais = styled.div`
   position: fixed;

@@ -9,6 +9,7 @@ export const CardProduto = styled.div`
   border: 1px solid ${cores.vermelho};
   word-wrap: break-word;
   overflow: hidden;
+  padding-bottom: 8px;
 
   @media (max-width: 768px) {
     margin-left: 32px;
@@ -46,7 +47,6 @@ export const Btn = styled(Link)`
   height: 24px;
   color: ${cores.branco};
   border: none;
-  margin-bottom: 10px;
   margin-left: 8px;
   flex-shrink: 0;
   text-decoration: none;
