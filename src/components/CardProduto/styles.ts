@@ -6,7 +6,7 @@ height: 338;
 width: 320px ;
 background-color: ${cores.vermelho};
 color: ${cores.branco};
-padding-bottom: 20px;
+padding-bottom: 12px;
 padding-left: 8px;
 `
 
