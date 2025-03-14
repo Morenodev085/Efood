@@ -2,18 +2,19 @@ import styled from "styled-components";
 import { cores } from "../../styles";
 
 export const CardDoRestaurante = styled.div`
-height: auto;
-max-width: 320px;
+height: 338;
+width: 320px ;
 background-color: ${cores.vermelho};
 color: ${cores.branco};
 padding-bottom: 20px;
+padding-left: 8px;
 `
 
 export const ImgCardapio = styled.img`
   height: 167px;
   width: 304px;
   margin-top: 8px;
-  margin-left: 8px;
+
 `
 
 export const TituloCardRestaurante = styled.h3`
@@ -35,7 +36,7 @@ export const BotaoCardapio = styled.button`
   display: block;
 width: 304px;
 font-weight: bold;
-margin-left: 8px;
+
 `
 export const CartMais = styled.div`
   position: fixed;

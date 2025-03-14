@@ -8,8 +8,8 @@ const Banner = () => {
 
 
   return (
-    <ContainerBanner>
-      <InfoBanner style={{backgroundImage: `url(${apresentacao})`}}>
+    <ContainerBanner style={{backgroundImage: `url(${apresentacao})`}} className="container">
+      <InfoBanner  >
         <Categoria>Italiano</Categoria>
         <TituloBanner>La Dolce Vita Trattoria</TituloBanner>
       </InfoBanner>
