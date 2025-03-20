@@ -5,6 +5,8 @@ export const ContainerBanner = styled.div`
   position: relative;
   max-height: 280px;
   width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &::after {
     position: absolute;
@@ -26,6 +28,7 @@ color: ${cores.branco};
 object-fit: cover;
 z-index: 1;
 position: relative;
+margin-left: 64px;
 `
 
 export const TituloBanner = styled.h2`
