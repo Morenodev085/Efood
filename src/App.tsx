@@ -3,6 +3,7 @@ import { RouterProvider } from 'react-router-dom';
 import { EstiloGlobal, } from './styles';
 
 import Rotas from './rotas'
+import React from 'react';
 
 function App() {
   return (

@@ -5,6 +5,7 @@ import Rodape from "./components/Rodape/index";
 import HeaderRestaurante from "./components/HeaderDeRestaurante";
 import Banner from "./components/Banner";
 import CardapioRestaurante from "./components/CardapioRestaurante";
+import React from "react";
 
 const Rotas = createBrowserRouter([
   {

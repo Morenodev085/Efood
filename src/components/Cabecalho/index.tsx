@@ -2,6 +2,7 @@ import { Logo } from "../../styles"
 import { Cabecalho, TituloH, } from "./styles"
 import vetor from '../../assets/Vector.png'
 import logo from '../../assets/logo.png'
+import React from "react"
 
 
 const Header = () => {

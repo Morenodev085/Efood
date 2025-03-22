@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import CardRestaurante from "../CardProduto";  // Assumindo que esse é o componente que renderiza cada item
 import { ListaRestaurante } from "./styles";
+import React from 'react';
 
 
 const CardapioRestaurante = () => {

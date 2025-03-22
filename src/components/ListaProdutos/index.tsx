@@ -1,6 +1,7 @@
 import Produto from "../Produto"
 import { ListaProduto } from "./styles"
 import useFetchRestaurantes from '../../Api'
+import React from "react";
 
 
 const ListaDeProdutos = () => {

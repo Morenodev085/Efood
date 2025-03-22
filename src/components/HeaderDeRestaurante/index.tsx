@@ -2,6 +2,7 @@ import { Logo } from "../../styles"
 import { Cabecalho, NomeDoRestaurate, } from "./styles"
 import logo from '../../assets/logo.png'
 import vetor from '../../assets/Vector.png'
+import React from "react"
 
 
 

@@ -3,6 +3,7 @@ import { BotaoCardapio, CardDoRestaurante, CartMais,
   DescricaoCardRestaurante, ImgCardapio,
   TituloCardRestaurante, ComponenteModal } from "./styles";
 import pizza from '../../assets/Pizza.png'
+import React from "react";
 
 const CardRestaurante = () => {
 

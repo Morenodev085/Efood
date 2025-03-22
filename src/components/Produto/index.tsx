@@ -1,6 +1,7 @@
 import { CardProduto, TitutloCard, DescricaoCard, Btn, LinhaTitutlo, NotaP } from "./styles"
 
 import apresentacao from '../../assets/apresentacao.png'
+import React from "react"
 
 
 type Props = {
