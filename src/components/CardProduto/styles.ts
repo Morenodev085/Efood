@@ -36,6 +36,7 @@ export const BotaoCardapio = styled.button`
   color: ${cores.vermelho};
   display: block;
 width: 304px;
+height: 24px;
 font-weight: bold;
 
 `
