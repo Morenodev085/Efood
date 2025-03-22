@@ -17,7 +17,7 @@ export const ListaLinks = styled.ul`
   margin-bottom: 32px;
   `
 
-export const Link = styled.li`
+export const LinkS = styled.li`
   font-size: 24px;
   margin-left: 8px;
   color: ${cores.vermelho};
