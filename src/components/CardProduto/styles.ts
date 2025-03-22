@@ -26,6 +26,7 @@ export const DescricaoCardRestaurante = styled.p`
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 8px;
+  width:304px;
 `
 
 export const BotaoCardapio = styled.button`

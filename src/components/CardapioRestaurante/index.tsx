@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import CardRestaurante from "../CardProduto";  // Assumindo que esse é o componente que renderiza cada item
 import { ListaRestaurante } from "./styles";
 
+
 const CardapioRestaurante = () => {
 
   type Restaurantes = {
@@ -32,7 +33,7 @@ const CardapioRestaurante = () => {
 
   return (
     <>
-      <ListaRestaurante>
+      <ListaRestaurante >
         {cardapio.map((restaurante) => (
 
           <CardRestaurante key={restaurante.id}  />
