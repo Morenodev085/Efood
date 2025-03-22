@@ -8,6 +8,7 @@ export const ContainerRodape = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+;
 `
 
 export const ListaLinks = styled.ul`
@@ -20,6 +21,7 @@ export const Link = styled.li`
   font-size: 24px;
   margin-left: 8px;
   color: ${cores.vermelho};
+  text-decoration: none
 `
 export const InfoRodape = styled.h4`
   font-size: 10px;
