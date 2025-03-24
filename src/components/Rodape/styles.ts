@@ -15,6 +15,7 @@ export const ListaLinks = styled.ul`
   display: flex;
   list-style-type: none;
   margin-bottom: 32px;
+  align-items: center;
   `
 
 export const LinkS = styled.li`

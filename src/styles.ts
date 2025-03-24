@@ -25,4 +25,5 @@ body{
 export const Logo = styled.img`
     margin-top: 40px;
     margin-bottom: 64px;
+    align-items: center;
 `
