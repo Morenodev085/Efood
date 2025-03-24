@@ -11,7 +11,7 @@ const Rodape = () => {
       <Logo src={logo} alt="Efood"></Logo>
       <ListaLinks>
         <LinkS>
-          <FaFacebook />
+          <a href="#"><FaFacebook /> </a>
         </LinkS>
         <LinkS>
           <FaInstagram />
