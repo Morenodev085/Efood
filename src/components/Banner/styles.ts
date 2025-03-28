@@ -7,6 +7,7 @@ export const ContainerBanner = styled.div`
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  max-width: 100vw;
 
   &::after {
     position: absolute;
@@ -28,13 +29,15 @@ color: ${cores.branco};
 object-fit: cover;
 z-index: 1;
 position: relative;
-margin-left: 64px;
+max-width: 1200px;
+margin: auto auto;
+padding: 20px;
 `
 
 export const TituloBanner = styled.h2`
   font-size: 32px;
 
-  margin-top: 180px;
+  margin-top: 160px;
 `
 
 export const Categoria = styled.p`

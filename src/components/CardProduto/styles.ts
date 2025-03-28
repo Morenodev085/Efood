@@ -49,6 +49,7 @@ export const CartMais = styled.div`
   display: none;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 
   &.visivel{
     display: flex;

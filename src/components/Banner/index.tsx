@@ -10,7 +10,8 @@ const Banner = () => {
   return (
     <ContainerBanner style={{backgroundImage: `url(${apresentacao})`}} className="container">
       <InfoBanner  >
-        <Categoria>Italiano</Categoria>
+        <Categoria
+        >Italiano</Categoria>
         <TituloBanner>La Dolce Vita Trattoria</TituloBanner>
       </InfoBanner>
     </ContainerBanner>
