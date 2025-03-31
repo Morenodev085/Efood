@@ -1,7 +1,16 @@
-import { CardProduto, TitutloCard, DescricaoCard, Btn, LinhaTitutlo, NotaP } from "./styles"
+import { CardProduto,
+  TitutloCard,
+  DescricaoCard,
+  Btn,
+  CardInformacao,
+  LinhaTitutlo,
+  ImgProduto,
+  NotaP } from "./styles"
 
 import apresentacao from '../../assets/apresentacao.png'
 import React from "react"
+import { FaStar } from "react-icons/fa";
+
 
 
 type Props = {
@@ -14,12 +23,14 @@ to: string
 const Produto = ({titulo, Nota, descricao, to}: Props ) => {
 
   return (
+
+    <CardInformacao>
+    <ImgProduto src={apresentacao} alt={titulo} />
     <CardProduto>
-      <img src={apresentacao} alt={titulo} />
       <LinhaTitutlo>
         <TitutloCard>{titulo}</TitutloCard>
         <NotaP>
-          {Nota}
+          {Nota}<FaStar />
         </NotaP>
       </LinhaTitutlo>
       <DescricaoCard>
@@ -27,6 +38,7 @@ const Produto = ({titulo, Nota, descricao, to}: Props ) => {
       </DescricaoCard>
       <Btn to={to}>Saiba mais </Btn>
     </CardProduto>
+    </CardInformacao>
   )
 }
 
