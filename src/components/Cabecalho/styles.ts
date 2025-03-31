@@ -4,7 +4,8 @@ export const Cabecalho = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  max-width: auto;
+  max-width: 1048px;
+
 
 `
 
