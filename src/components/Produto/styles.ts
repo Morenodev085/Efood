@@ -15,6 +15,7 @@ height: auto;
   word-wrap: break-word;
   overflow: hidden;
   padding-bottom: 12px;
+  padding-top: 8px;
 
   @media (max-width: 768px) {
     margin-left: 32px;
