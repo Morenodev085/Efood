@@ -21,12 +21,16 @@ export const TituloCardRestaurante = styled.h3`
   font-size: 16px;
   margin-bottom: 8px;
   margin-top: 4px;
+  font-weight: bold;
+  color: ${cores.creme};
+
 `
 export const DescricaoCardRestaurante = styled.p`
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 8px;
   width:304px;
+  color: ${cores.creme};
 `
 
 export const BotaoCardapio = styled.button`
