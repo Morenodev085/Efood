@@ -10,21 +10,21 @@ export const Cabecalho = styled.div`
   color: ${cores.vermelho};
   `
 export const Centralizador = styled.div`
-display: flex;
+  display: flex;
   justify-content: space-between; /* ou space-around */
   align-items: center;
-  margin: auto auto;
-  max-width: 1200px;
-
-
+  margin: 0 auto;
+  max-width: 1600px;
+  width: 100%;
 `
 
 export const TituloH = styled.h1`
   font-size: 36px;
-  text-align: center;
   margin-bottom: 32px;
+
   `
+
 export const NomeDoRestaurate = styled.h2`
   font-size: 18px;
-  margin: 0 180px;
+  margin: 0 auto;
 `
