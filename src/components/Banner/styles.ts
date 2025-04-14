@@ -31,19 +31,17 @@ z-index: 1;
 position: relative;
 max-width: 1200px;
 margin: auto auto;
-padding: 20px;
+padding-left: 80px;
+padding-bottom: 40px;
 `
 
 export const TituloBanner = styled.h2`
   font-size: 32px;
 
-  margin-top: 160px;
+  margin-top: 120px;
 `
 
 export const Categoria = styled.p`
   font-size: 32px;
-  font-weight: 100;
-
-
-
+  font-weight: 300;
 `

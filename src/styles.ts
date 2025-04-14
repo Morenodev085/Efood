@@ -23,7 +23,8 @@ body{
 }
 `
 export const Logo = styled.img`
-    margin-top: 40px;
-    margin-bottom: 64px;
+    margin-top: 34px;
+    margin-bottom: 34px;
     align-items: center;
+    height: auto;
 `
