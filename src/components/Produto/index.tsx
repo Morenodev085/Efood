@@ -26,7 +26,7 @@ const Produto = ({titulo, Nota, descricao, to, img}: Props ) => {
   return (
 
     <CardInformacao>
-    <ImgProduto src={img} alt={titulo} />
+    <ImgProduto src={apresentacao} alt={titulo} />
     <CardProduto>
       <LinhaTitutlo>
         <TitutloCard>{titulo}</TitutloCard>

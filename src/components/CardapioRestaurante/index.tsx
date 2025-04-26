@@ -26,19 +26,12 @@ const CardapioRestaurante = () => {
 
   const [cardapio, setCardapio] = useState<Restaurantes[]>([]);
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((data) => setCardapio(data));  // Aqui estamos setando o estado do cardápio com os dados da API
-  }, []); // O array vazio garante que a requisição aconteça apenas uma vez ao montar o componente
 
   return (
     <>
       <ListaRestaurante >
-        {cardapio.map((restaurante) => (
 
-          <CardRestaurante key={restaurante.id}  />
-        ))}
+          <CardRestaurante  />
       </ListaRestaurante>
     </>
   );
