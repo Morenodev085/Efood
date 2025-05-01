@@ -2,10 +2,9 @@ import React from "react"
 import { Categoria, ContainerBanner, InfoBanner, TituloBanner } from "./styles"
 
 import apresentacao from '../../assets/apresentacao.png'
+import { Restaurante } from "../../pages/Home"
 
 const Banner = () => {
-
-
 
   return (
     <ContainerBanner style={{backgroundImage: `url(${apresentacao})`}} className="container">

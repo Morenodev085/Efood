@@ -19,7 +19,7 @@ const Rotas = createBrowserRouter([
       <>
         <HeaderRestaurante />
         <Banner />
-        <CardapioRestaurante />
+        <CardapioRestaurante restaurante={restaurantes} />
         <Rodape />
       </>
   },
@@ -29,7 +29,7 @@ const Rotas = createBrowserRouter([
       <>
         <HeaderRestaurante />
         <Banner />
-        <CardapioRestaurante />
+        <CardapioRestaurante restaurante={restaurantes} />
         <Rodape />
       </>
   },
@@ -39,7 +39,7 @@ const Rotas = createBrowserRouter([
       <>
         <HeaderRestaurante />
         <Banner />
-        <CardapioRestaurante />
+        <CardapioRestaurante restaurante={restaurantes} />
         <Rodape />
       </>
   },
@@ -49,7 +49,7 @@ const Rotas = createBrowserRouter([
       <>
         <HeaderRestaurante />
         <Banner />
-        <CardapioRestaurante />
+        <CardapioRestaurante restaurante={restaurantes} />
         <Rodape />
       </>
   },
@@ -59,7 +59,7 @@ const Rotas = createBrowserRouter([
       <>
         <HeaderRestaurante />
         <Banner />
-        <CardapioRestaurante />
+        <CardapioRestaurante restaurante={restaurantes} />
         <Rodape />
       </>
   },
@@ -69,7 +69,7 @@ const Rotas = createBrowserRouter([
       <>
         <HeaderRestaurante />
         <Banner />
-        <CardapioRestaurante />
+        <CardapioRestaurante restaurante={restaurantes} />
         <Rodape />
       </>
   }

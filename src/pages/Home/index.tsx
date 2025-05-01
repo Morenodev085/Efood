@@ -11,12 +11,12 @@ export type Restaurante = {
   descricao: string;
   capa: string;
   cardapio: {
-    foto: string
-    preco: number
-    nome: string
-    descricao: string
-    porcao: string
-  }
+    foto: string;
+    preco: number;
+    nome: string;
+    descricao: string;
+    porcao: string;
+  }[];
 
 }
 
@@ -29,7 +29,7 @@ const Home = () => {
     fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
     .then((res) => res.json())
     .then((res) => setRestaurantes(res))
-  })
+  }, [])
   return (
 
     <>

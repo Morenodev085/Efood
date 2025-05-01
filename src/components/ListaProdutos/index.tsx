@@ -1,7 +1,6 @@
 import Produto from "../Produto"
 import { ListaProduto } from "./styles"
 import React from "react";
-import fotoJapa from '../../assets/restarante_japa.png'
 import { Restaurante } from '../../pages/Home/'
 
 type Props = {
@@ -12,14 +11,14 @@ const ListaDeProdutos = ({restaurantes}: Props) => {
 
   return (
     <ListaProduto>
-    {restaurantes.map((restairante)=> (
+    {restaurantes.map((restaurante)=> (
       <Produto
-      key={restairante.id}
-      Nota={restairante.avaliacao}
-      descricao={restairante.descricao}
-      img={restairante.capa}
-      titulo={restairante.titulo}
-      to={`/${restairante.tipo}`}
+      key={restaurante.id}
+      Nota={restaurante.avaliacao}
+      descricao={restaurante.descricao}
+      img={restaurante.capa}
+      titulo={restaurante.titulo}
+      to={`/${restaurante.tipo}`}
       />
     ))}
 

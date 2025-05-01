@@ -5,7 +5,15 @@ import { BotaoCardapio, CardDoRestaurante, CartMais,
 import pizza from '../../assets/Pizza.png'
 import React from "react";
 
-const CardRestaurante = () => {
+type Props = {
+  foto: string
+  nome: string;
+  descricao: string;
+  preco: number;
+  porcao: string;
+};
+
+const CardRestaurante = ({foto,nome,descricao,preco, porcao}: Props) => {
 
 
   const [visivel, setVisivel] = useState(false);
@@ -19,11 +27,10 @@ const CardRestaurante = () => {
     <>
       {/* Card do restaurante */}
       <CardDoRestaurante>
-        <ImgCardapio src={pizza} alt="Pizza Marguerita" />
-        <TituloCardRestaurante>Pizza Marguerita</TituloCardRestaurante>
+        <ImgCardapio src={foto} alt="Pizza Marguerita" />
+        <TituloCardRestaurante>{nome}</TituloCardRestaurante>
         <DescricaoCardRestaurante>
-          A clássica Marguerita: molho de tomate suculento, mussarela derretida,
-          manjericão fresco e um toque de azeite. Sabor e simplicidade!
+          {descricao}
         </DescricaoCardRestaurante>
         <BotaoCardapio onClick={abrirModal}>Saiba mais</BotaoCardapio>
       </CardDoRestaurante>
@@ -32,18 +39,14 @@ const CardRestaurante = () => {
       <CartMais className={visivel ? "visivel" : ""}>
         <ComponenteModal className="container">
           <div>
-            <ImgCardapio src="https://placehold.co/1024x708" alt="Pizza Marguerita - Detalhe" />
+            <ImgCardapio src={foto} alt="Prato do restaurante" />
           </div>
           <div className="Infocard">
-            <TituloCardRestaurante>Pizza Marguerita</TituloCardRestaurante>
+            <TituloCardRestaurante>{nome}</TituloCardRestaurante>
             <p>
-              A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável.
-              Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade,
-              manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e
-              ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo.
-              É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.
+              {descricao}
             </p>
-            <p>Serve: de 2 a 3 pessoas</p>
+            <p>{porcao}</p>
             <BotaoCardapio className="BotaoModal">Adicionar ao carrinho</BotaoCardapio>
           </div>
         </ComponenteModal>
