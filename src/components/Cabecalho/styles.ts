@@ -8,9 +8,7 @@ export const Cabecalho = styled.div`
 
 
 `
-export const Infocabecalho = styled.div`
-max-width: 1024px;
-`
+
 
 export const TituloH = styled.h1`
   font-size: 36px;

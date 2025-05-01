@@ -6,17 +6,12 @@ import HeaderRestaurante from "./components/HeaderDeRestaurante";
 import Banner from "./components/Banner";
 import CardapioRestaurante from "./components/CardapioRestaurante";
 import React from "react";
+import Home from "./pages/Home";
 
 const Rotas = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <>
-        <Header />
-        <ListaDeProdutos />
-        <Rodape />
-      </>
-    )
+    element: <Home/>
   },
   {
     path: '/italiana',
