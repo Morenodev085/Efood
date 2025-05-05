@@ -33,6 +33,7 @@ const Home = () => {
   return (
 
     <>
+
       <Header />
       <ListaDeProdutos restaurantes ={restaurantes} />
       <Rodape />

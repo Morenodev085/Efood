@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import Header from "./components/Cabecalho";
-import ListaDeProdutos from "./components/ListaProdutos";
 import Rodape from "./components/Rodape/index";
 import HeaderRestaurante from "./components/HeaderDeRestaurante";
 import Banner from "./components/Banner";
 import CardapioRestaurante from "./components/CardapioRestaurante";
 import React from "react";
 import Home from "./pages/Home";
+import Restaurante from "./pages/Restaurantes";
+
 
 const Rotas = createBrowserRouter([
   {
@@ -14,63 +14,45 @@ const Rotas = createBrowserRouter([
     element: <Home/>
   },
   {
-    path: '/italiana',
+    path: '/:tipoRsstaurante',
     element:
       <>
-        <HeaderRestaurante />
-        <Banner />
-        <CardapioRestaurante restaurante={restaurantes} />
-        <Rodape />
+        <Restaurante/>
       </>
   },
   {
     path: '/árabe',
     element:
-      <>
-        <HeaderRestaurante />
-        <Banner />
-        <CardapioRestaurante restaurante={restaurantes} />
-        <Rodape />
-      </>
+    <>
+      <Restaurante/>
+    </>
   },
   {
     path: '/japonês',
     element:
       <>
-        <HeaderRestaurante />
-        <Banner />
-        <CardapioRestaurante restaurante={restaurantes} />
-        <Rodape />
+        <Restaurante/>
       </>
   },
   {
     path: '/português',
     element:
       <>
-        <HeaderRestaurante />
-        <Banner />
-        <CardapioRestaurante restaurante={restaurantes} />
-        <Rodape />
+        <Restaurante/>
       </>
   },
   {
     path: '/pizzaria',
     element:
       <>
-        <HeaderRestaurante />
-        <Banner />
-        <CardapioRestaurante restaurante={restaurantes} />
-        <Rodape />
+        <Restaurante/>
       </>
   },
   {
     path: '/vegano',
     element:
       <>
-        <HeaderRestaurante />
-        <Banner />
-        <CardapioRestaurante restaurante={restaurantes} />
-        <Rodape />
+        <Restaurante/>
       </>
   }
 ])

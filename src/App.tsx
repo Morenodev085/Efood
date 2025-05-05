@@ -6,12 +6,15 @@ import { EstiloGlobal, } from './styles';
 
 import Rotas from './rotas'
 import React from 'react';
+import { RestauranteProvider } from './Context';
 
 function App() {
   return (
     <>
       <EstiloGlobal />
+      <RestauranteProvider>
       <RouterProvider router={Rotas} />
+      </RestauranteProvider>
     </>
   );
 }

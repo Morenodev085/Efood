@@ -6,8 +6,6 @@ import { CardProduto,
   LinhaTitutlo,
   ImgProduto,
   NotaP } from "./styles"
-
-import apresentacao from '../../assets/apresentacao.png'
 import React from "react"
 import { FaStar } from "react-icons/fa";
 
@@ -15,7 +13,7 @@ import { FaStar } from "react-icons/fa";
 
 type Props = {
 img: string,
-  titulo: string,
+titulo: string,
 Nota: number,
 descricao: string,
 to: string
@@ -26,7 +24,7 @@ const Produto = ({titulo, Nota, descricao, to, img}: Props ) => {
   return (
 
     <CardInformacao>
-    <ImgProduto src={apresentacao} alt={titulo} />
+    <ImgProduto src={img} alt={titulo} />
     <CardProduto>
       <LinhaTitutlo>
         <TitutloCard>{titulo}</TitutloCard>

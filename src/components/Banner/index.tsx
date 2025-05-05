@@ -1,17 +1,21 @@
 import React from "react"
 import { Categoria, ContainerBanner, InfoBanner, TituloBanner } from "./styles"
-
-import apresentacao from '../../assets/apresentacao.png'
-import { Restaurante } from "../../pages/Home"
+import { useRestaurantes } from "../../Context" // ajuste o caminho se estiver diferente
 
 const Banner = () => {
+  const { restaurantes } = useRestaurantes()
+  const restaurante = restaurantes[0] // ou filtre por tipo
+
+  if (!restaurante) return null
 
   return (
-    <ContainerBanner style={{backgroundImage: `url(${apresentacao})`}} className="container">
-      <InfoBanner  >
-        <Categoria
-        >Italiano</Categoria>
-        <TituloBanner>La Dolce Vita Trattoria</TituloBanner>
+    <ContainerBanner
+      style={{ backgroundImage: `url(${restaurante.capa})` }}
+      className="container"
+    >
+      <InfoBanner>
+        <Categoria>{restaurante.tipo}</Categoria>
+        <TituloBanner>{restaurante.titulo}</TituloBanner>
       </InfoBanner>
     </ContainerBanner>
   )
