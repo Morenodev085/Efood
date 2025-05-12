@@ -1,14 +1,17 @@
 import React from "react"
-import { Categoria, ContainerBanner, InfoBanner, TituloBanner } from "./styles"
-import { useRestaurantes } from "../../Context" // ajuste o caminho se estiver diferente
+import {
+  Categoria,
+  ContainerBanner,
+  InfoBanner,
+  TituloBanner
+} from "./styles"
+import { Restaurante } from "../../pages/Home"
 
-const Banner = () => {
-  const { restaurantes } = useRestaurantes()
+type Props = {
+  restaurante: Restaurante
+}
 
-  const restaurante = restaurantes[0] // Mostra o primeiro restaurante por padrão
-
-  if (!restaurante) return null
-
+const Banner = ({ restaurante }: Props) => {
   return (
     <ContainerBanner
       style={{ backgroundImage: `url(${restaurante.capa})` }}

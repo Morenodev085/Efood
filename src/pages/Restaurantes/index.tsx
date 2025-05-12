@@ -3,40 +3,32 @@ import Banner from "../../components/Banner";
 import CardapioRestaurante from "../../components/CardapioRestaurante";
 import HeaderRestaurante from "../../components/HeaderDeRestaurante";
 import Rodape from "../../components/Rodape";
+import { useParams } from "react-router-dom";
+import { Restaurante } from "../../pages/Restaurantes";
 
-export type Restaurante = {
-  id: number;
-  titulo: string;
-  tipo: string;
-  avaliacao: number;
-  descricao: string;
-  capa: string;
-  cardapio: {
-    foto: string;
-    preco: number;
-    nome: string;
-    descricao: string;
-    porcao: string;
-  }[];
-};
+
 
 const Restaurante = () => {
-  const [restaurantes, setRestaurantes] = useState<Restaurante[]>([]);
+  const {id} = useParams();
+
+  const [restaurante, setRestaurantes] = useState<Restaurante>();
+
 
   useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((res) => res.json())
       .then((res) => setRestaurantes(res));
-  }, []);
+  }, [id]);
 
+  if(!restaurante){
+    return <h3>Carregando...</h3>
+  }
 
   return (
     <>
       <HeaderRestaurante />
-      <Banner />
-      {restaurantes.length > 0 && (
-        <CardapioRestaurante restaurante={restaurantes[0]} />
-      )}
+      <Banner restaurante={restaurante} />
+        <CardapioRestaurante restaurante={restaurante} />
       <Rodape />
     </>
   );

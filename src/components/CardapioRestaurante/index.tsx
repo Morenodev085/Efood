@@ -10,9 +10,8 @@ type Props = {
 const CardapioRestaurante = ({ restaurante }: Props) => {
   return (
     <ListaRestaurante>
-      {restaurante.cardapio.map((item, index) => (
+      {restaurante.cardapio.map((item, ) => (
         <CardRestaurante
-          key={index}
           id={restaurante.id}
           preco={item.preco}
           nome={item.nome}
