@@ -4,25 +4,23 @@ import { ListaRestaurante } from "./styles";
 import { Restaurante } from '../../pages/Home';
 
 type Props = {
-  restaurantes: Restaurante[]
+  restaurante: Restaurante;
 };
 
-const CardapioRestaurante = ({ restaurantes }: Props) => {
+const CardapioRestaurante = ({ restaurante }: Props) => {
   return (
-<ListaRestaurante>
-      {restaurantes.map((restaurante) =>
-        restaurante.cardapio.map((item, index) => (
-          <CardRestaurante
-            key={index}
-            id={restaurante.id}
-            preco={item.preco}
-            nome={item.nome}
-            descricao={item.descricao}
-            foto={item.foto}
-            porcao={item.porcao}
-          />
-        ))
-      )}
+    <ListaRestaurante>
+      {restaurante.cardapio.map((item, index) => (
+        <CardRestaurante
+          key={index}
+          id={restaurante.id}
+          preco={item.preco}
+          nome={item.nome}
+          descricao={item.descricao}
+          foto={item.foto}
+          porcao={item.porcao}
+        />
+      ))}
     </ListaRestaurante>
   );
 };

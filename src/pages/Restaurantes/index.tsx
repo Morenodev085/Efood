@@ -34,10 +34,11 @@ const Restaurante = () => {
     <>
       <HeaderRestaurante />
       <Banner />
-        <CardapioRestaurante restaurantes={restaurantes} />
+      {restaurantes.length > 0 && (
+        <CardapioRestaurante restaurante={restaurantes[0]} />
+      )}
       <Rodape />
     </>
   );
-};
-
+}
 export default Restaurante;
