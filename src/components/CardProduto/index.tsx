@@ -1,11 +1,12 @@
+import React from "react";
 import { useState } from "react";
+
 import { BotaoCardapio, CardDoRestaurante, CartMais,
   DescricaoCardRestaurante, ImgCardapio,
   TituloCardRestaurante, ComponenteModal } from "./styles";
-import pizza from '../../assets/Pizza.png'
-import React from "react";
 
 type Props = {
+  id: number
   foto: string
   nome: string;
   descricao: string;
@@ -13,7 +14,7 @@ type Props = {
   porcao: string;
 };
 
-const CardRestaurante = ({foto,nome,descricao,preco, porcao}: Props) => {
+const CardRestaurante = ({foto,nome,descricao,id,preco, porcao}: Props) => {
 
 
   const [visivel, setVisivel] = useState(false);
@@ -27,7 +28,7 @@ const CardRestaurante = ({foto,nome,descricao,preco, porcao}: Props) => {
     <>
       {/* Card do restaurante */}
       <CardDoRestaurante>
-        <ImgCardapio src={foto} alt="Pizza Marguerita" />
+        <ImgCardapio src={foto} alt="Foto do alimento" />
         <TituloCardRestaurante>{nome}</TituloCardRestaurante>
         <DescricaoCardRestaurante>
           {descricao}
@@ -51,6 +52,7 @@ const CardRestaurante = ({foto,nome,descricao,preco, porcao}: Props) => {
           </div>
         </ComponenteModal>
         <div className="overlay" onClick={fecharModal}></div>
+        <BotaoCardapio>Adicionar ao carrinho - {preco}</BotaoCardapio>
       </CartMais>
     </>
   );

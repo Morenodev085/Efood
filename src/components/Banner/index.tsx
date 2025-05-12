@@ -4,7 +4,8 @@ import { useRestaurantes } from "../../Context" // ajuste o caminho se estiver d
 
 const Banner = () => {
   const { restaurantes } = useRestaurantes()
-  const restaurante = restaurantes[0] // ou filtre por tipo
+
+  const restaurante = restaurantes[0] // Mostra o primeiro restaurante por padrão
 
   if (!restaurante) return null
 

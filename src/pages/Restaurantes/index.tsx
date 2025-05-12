@@ -29,17 +29,12 @@ const Restaurante = () => {
       .then((res) => setRestaurantes(res));
   }, []);
 
-  const restauranteSelecionado = restaurantes.length > 0 ? restaurantes[0] : null;
 
   return (
     <>
       <HeaderRestaurante />
       <Banner />
-      {restauranteSelecionado ? (
-        <CardapioRestaurante cardapio={restauranteSelecionado.cardapio} />
-      ) : (
-        <p>Carregando cardápio...</p>
-      )}
+        <CardapioRestaurante restaurantes={restaurantes} />
       <Rodape />
     </>
   );
