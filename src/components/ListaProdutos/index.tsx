@@ -18,7 +18,7 @@ const ListaDeProdutos = ({restaurantes}: Props) => {
       descricao={restaurante.descricao}
       img={restaurante.capa}
       titulo={restaurante.titulo}
-      to={`/${restaurante.tipo}`}
+      to={`/${restaurante.id}`}
       />
     ))}
 

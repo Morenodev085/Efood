@@ -4,11 +4,11 @@ import CardapioRestaurante from "../../components/CardapioRestaurante";
 import HeaderRestaurante from "../../components/HeaderDeRestaurante";
 import Rodape from "../../components/Rodape";
 import { useParams } from "react-router-dom";
-import { Restaurante } from "../../pages/Restaurantes";
+import type { Restaurante } from "../Home";
 
 
 
-const Restaurante = () => {
+const Restaurantes = () => {
   const {id} = useParams();
 
   const [restaurante, setRestaurantes] = useState<Restaurante>();
@@ -33,4 +33,4 @@ const Restaurante = () => {
     </>
   );
 }
-export default Restaurante;
+export default Restaurantes;
