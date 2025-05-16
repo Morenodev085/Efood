@@ -48,11 +48,10 @@ const CardRestaurante = ({foto,nome,descricao,id,preco, porcao}: Props) => {
               {descricao}
             </p>
             <p>{porcao}</p>
-            <BotaoCardapio className="BotaoModal">Adicionar ao carrinho</BotaoCardapio>
+            <BotaoCardapio className="BotaoModal">Adicionar ao carrinho - {preco}</BotaoCardapio>
           </div>
         </ComponenteModal>
         <div className="overlay" onClick={fecharModal}></div>
-        <BotaoCardapio>Adicionar ao carrinho - {preco}</BotaoCardapio>
       </CartMais>
     </>
   );
