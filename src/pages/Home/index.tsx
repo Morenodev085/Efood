@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import Header from "../../components/Cabecalho"
 import ListaDeProdutos from "../../components/ListaProdutos"
 import Rodape from "../../components/Rodape"
+import { useGetFeatureRestauranteQuery } from "../../services/api"
 
 export type Restaurante = {
   id: number;
@@ -22,6 +23,8 @@ export type Restaurante = {
 
 
 const Home = () => {
+
+    const {data/*: restaurante*/, isLoading} = useGetFeatureRestauranteQuery()
 
   const [restaurantes, setRestaurantes] = useState<Restaurante[]>([])
 

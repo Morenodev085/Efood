@@ -12,6 +12,7 @@ type Props = {
 }
 
 const Banner = ({ restaurante }: Props) => {
+
   return (
     <ContainerBanner
       style={{ backgroundImage: `url(${restaurante.capa})` }}
