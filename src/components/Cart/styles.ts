@@ -17,9 +17,13 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-display: flex;
+display: none;
 justify-content: flex-end ;
 color: ${cores.creme};
+
+&.is-open{
+  display: flex;
+}
 `
 
 export const Sidebar = styled.aside`

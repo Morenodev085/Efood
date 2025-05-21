@@ -28,3 +28,10 @@ export const NomeDoRestaurate = styled.h2`
   font-size: 18px;
   margin: 0 auto;
 `
+export const BotaoDoRestaurate = styled.a`
+  font-size: 18px;
+  margin: 0 auto;
+  border: none;
+  color: ${cores.vermelho};
+  cursor: pointer;
+`

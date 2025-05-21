@@ -5,6 +5,11 @@ import { BotaoCardapio, CardDoRestaurante, CartMais,
   DescricaoCardRestaurante, ImgCardapio,
   TituloCardRestaurante, ComponenteModal } from "./styles";
 
+  import { useDispatch } from "react-redux";
+  import {add, open} from '../../store/reducers/cart'
+import  { Restaurante } from "../../pages/Home";
+
+
 type Props = {
   id: number
   foto: string
@@ -14,8 +19,18 @@ type Props = {
   porcao: string;
 };
 
-const CardRestaurante = ({foto,nome,descricao,id,preco, porcao}: Props) => {
+type Props2 ={
+  restaurante: Restaurante
+}
 
+const CardRestaurante = ({foto,nome,descricao,id,preco, porcao, }: Props) => {
+
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(restaurante))
+    dispatch(open())
+  }
 
   const [visivel, setVisivel] = useState(false);
 
