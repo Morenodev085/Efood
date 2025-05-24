@@ -19,6 +19,12 @@ const Cart = () => {
       dispatch(close())
     )
 
+    const getAllPreice = () => {
+      return items.reduce((acumulador, valorAtual) => {
+        return (acumulador += valorAtual.cardapio.preco.current!)
+      }, 0)
+    }
+
   return (
     <CartConteiner className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCard} />
@@ -28,7 +34,7 @@ const Cart = () => {
           <CardItem key={item.id}>
             <img src={item.cardapio.} alt={item.cardapio.} />
             <div>
-              <h3>{item.cardapio.}</h3>
+              <h3>{item.cardapio.nome}</h3>
               <span>{item.cardapio.}</span>
               <CartLixeira>X</CartLixeira>
             </div>
@@ -36,7 +42,7 @@ const Cart = () => {
     )}
         </ul>
 
-        <Prices>Valor total R$182,70</Prices>
+        <Prices>Valor total {getAllPreice}</Prices>
         <BotaoCardapio >Comtinuar com a compra</BotaoCardapio>
       </Sidebar>
     </CartConteiner>
