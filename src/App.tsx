@@ -15,7 +15,15 @@ function App() {
     <Provider store={store}>
       <EstiloGlobal />
       <RouterProvider router={Rotas} />
-      <Cart/>
+      <Cart restaurante={{
+          id: 0,
+          titulo: '',
+          tipo: '',
+          avaliacao: 0,
+          descricao: '',
+          capa: '',
+          cardapio: []
+        }}/>
     </Provider>
     </>
   );

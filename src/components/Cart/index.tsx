@@ -7,9 +7,13 @@ import { Overlay, CartConteiner, Sidebar, Prices, CardItem, CartLixeira } from '
 import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
 import {close} from '../../store/reducers/cart'
+import { Restaurante } from "../../pages/Home"
 
+type Props = {
+  restaurante: Restaurante;
+};
 
-const Cart = () => {
+const Cart = ({ restaurante }: Props) => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
 
 
@@ -20,9 +24,9 @@ const Cart = () => {
     )
 
     const getAllPreice = () => {
-      return items.reduce((acumulador, valorAtual) => {
-        return (acumulador += valorAtual.cardapio.preco.current!)
-      }, 0)
+      /*return items.reduce((acumulador, valorAtual) => {
+        return (acumulador += valorAtual. .current!)
+      }, 0)*/
     }
 
   return (
@@ -30,12 +34,12 @@ const Cart = () => {
       <Overlay onClick={closeCard} />
       <Sidebar>
         <ul>
-    {items.map((item) =>
-          <CardItem key={item.id}>
-            <img src={item.cardapio.} alt={item.cardapio.} />
+    {restaurante.cardapio.map((item, ) =>
+          <CardItem key={restaurante.id}>
+            <img src={item.foto} alt={item.nome} />
             <div>
-              <h3>{item.cardapio.nome}</h3>
-              <span>{item.cardapio.}</span>
+              <h3>{item.nome}</h3>
+              <span>{item.preco}</span>
               <CartLixeira>X</CartLixeira>
             </div>
           </CardItem>
