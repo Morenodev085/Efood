@@ -24,7 +24,6 @@ export type Restaurante = {
 
 const Home = () => {
 
-    const {data/*: restaurante*/, isLoading} = useGetFeatureRestauranteQuery()
 
   const [restaurantes, setRestaurantes] = useState<Restaurante[]>([])
 

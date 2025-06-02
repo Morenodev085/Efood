@@ -24,9 +24,9 @@ const Cart = ({ restaurante }: Props) => {
     )
 
     const getAllPreice = () => {
-      /*return items.reduce((acumulador, valorAtual) => {
-        return (acumulador += valorAtual. .current!)
-      }, 0)*/
+      return items.reduce((acumulador, valorAtual) => {
+        return (acumulador += valorAtual.cardapio.preco.current!)
+      }, 0)
     }
 
   return (

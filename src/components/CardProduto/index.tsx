@@ -10,20 +10,13 @@ import { BotaoCardapio, CardDoRestaurante, CartMais,
 import  { Restaurante } from "../../pages/Home";
 
 
-type Props = {
-  id: number
-  foto: string
-  nome: string;
-  descricao: string;
-  preco: number;
-  porcao: string;
-};
 
-type Props2 ={
+
+type Props ={
   restaurante: Restaurante
 }
 
-const CardRestaurante = ({foto,nome,descricao,id,preco, porcao, }: Props) => {
+const CardRestaurante = ({restaurante }: Props) => {
 
   const dispatch = useDispatch()
 
@@ -43,10 +36,10 @@ const CardRestaurante = ({foto,nome,descricao,id,preco, porcao, }: Props) => {
     <>
       {/* Card do restaurante */}
       <CardDoRestaurante>
-        <ImgCardapio src={foto} alt="Foto do alimento" />
-        <TituloCardRestaurante>{nome}</TituloCardRestaurante>
+        <ImgCardapio src={restaurante.cardapio.foto} alt="Foto do alimento" />
+        <TituloCardRestaurante>{restaurante.cardapio.nome}</TituloCardRestaurante>
         <DescricaoCardRestaurante>
-          {descricao}
+          {restaurante.cardapio.descricao}
         </DescricaoCardRestaurante>
         <BotaoCardapio onClick={abrirModal}>Saiba mais</BotaoCardapio>
       </CardDoRestaurante>
@@ -55,14 +48,14 @@ const CardRestaurante = ({foto,nome,descricao,id,preco, porcao, }: Props) => {
       <CartMais className={visivel ? "visivel" : ""}>
         <ComponenteModal className="container">
           <div>
-            <ImgCardapio src={foto} alt="Prato do restaurante" />
+            <ImgCardapio src={restaurante.cardapio.foto} alt="Prato do restaurante" />
           </div>
           <div className="Infocard">
-            <TituloCardRestaurante>{nome}</TituloCardRestaurante>
+            <TituloCardRestaurante>{restaurante.cardapio.nome}</TituloCardRestaurante>
             <p>
-              {descricao}
+              {restaurante.cardapio.descricao}
             </p>
-            <p>{porcao}</p>
+            <p>{restaurante.cardapio.porcao}</p>
             <BotaoCardapio className="BotaoModal">Adicionar ao carrinho - {preco}</BotaoCardapio>
           </div>
         </ComponenteModal>
