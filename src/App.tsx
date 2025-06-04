@@ -23,7 +23,7 @@ function App() {
           avaliacao: 0,
           descricao: '',
           capa: '',
-        }} cardapio={ItemDoMenu}/>
+        }} cardapio={}/>
     </Provider>
     </>
   );
