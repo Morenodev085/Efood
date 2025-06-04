@@ -11,16 +11,24 @@ type Props = {
 const CardapioRestaurante = ({ restaurante, cardapio }: Props) => {
   return (
     <ListaRestaurante>
-      {cardapio.map((item) => (
-        <CardProduto
-          key={restaurante.id}
-          preco={item.preco}
-          nome={item.nome}
-          descricao={item.descricao}
-          foto={item.foto}
-          porcao={item.porcao}
-        />
-      ))}
+      {cardapio.map((item) => {
+        const novoItem: ItemDoMenu = {
+          descricao: item.descricao,
+          foto: item.foto,
+          nome: item.nome,
+          porcao: item.porcao,
+          preco: item.preco,
+
+        };
+
+        return (
+          <CardProduto
+            key={restaurante.id}
+            cardapio={novoItem}
+            restaurante={restaurante}
+          />
+        );
+      })}
     </ListaRestaurante>
   );
 };
