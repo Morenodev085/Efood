@@ -4,7 +4,8 @@ import CardapioRestaurante from "../../components/CardapioRestaurante";
 import HeaderRestaurante from "../../components/HeaderDeRestaurante";
 import Rodape from "../../components/Rodape";
 import { useParams } from "react-router-dom";
-import type { Restaurante } from "../Home";
+import type { Restaurante, ItemDoMenu } from "../Home";
+
 
 
 
@@ -12,6 +13,7 @@ const Restaurantes = () => {
   const {id} = useParams();
 
   const [restaurante, setRestaurantes] = useState<Restaurante>();
+
 
 
   useEffect(() => {
@@ -28,7 +30,7 @@ const Restaurantes = () => {
     <>
       <HeaderRestaurante />
       <Banner restaurante={restaurante} />
-        <CardapioRestaurante restaurante={restaurante} />
+        <CardapioRestaurante restaurante={restaurante} cardapio={[]}  />
       <Rodape />
     </>
   );

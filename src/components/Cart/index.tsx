@@ -7,11 +7,11 @@ import { Overlay, CartConteiner, Sidebar, Prices, CardItem, CartLixeira } from '
 import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
 import {close} from '../../store/reducers/cart'
-import { Cardapio, Restaurante } from "../../pages/Home"
+import { ItemDoMenu, Restaurante } from "../../pages/Home"
 
 type Props = {
   restaurante: Restaurante;
-  cardapio: Cardapio;
+  cardapio: ItemDoMenu;
 };
 
 const Cart = ({ restaurante, cardapio }: Props) => {
@@ -24,9 +24,8 @@ const Cart = ({ restaurante, cardapio }: Props) => {
       dispatch(close())
     )
     const getAllPreice = () => {
-      valorAtual.cardapio.preco.current!
       return items.reduce((acumulador, valorAtual) => {
-        return (acumulador += valorAtual.preco.current!)
+        return (acumulador += valorAtual.preco)
       }, 0)
     }
 
@@ -45,7 +44,7 @@ const Cart = ({ restaurante, cardapio }: Props) => {
           </CardItem>
         </ul>
 
-        <Prices>Valor total {getAllPreice}</Prices>
+        <Prices>Valor total {getAllPreice()}</Prices>
         <BotaoCardapio >Comtinuar com a compra</BotaoCardapio>
       </Sidebar>
     </CartConteiner>

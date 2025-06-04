@@ -14,9 +14,9 @@ export type Restaurante = {
 
 }
 
-export type Produto  = {
+export type  ItemDoMenu  = {
     foto: string;
-    preco: number;
+    preco: number ;
     nome: string;
     descricao: string;
     porcao: string;

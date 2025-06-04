@@ -7,14 +7,14 @@ import { BotaoCardapio, CardDoRestaurante, CartMais,
 
   import { useDispatch } from "react-redux";
   import {add, open} from '../../store/reducers/cart'
-import  { Produto, Restaurante } from "../../pages/Home";
+import  { ItemDoMenu, Restaurante } from "../../pages/Home";
 
 
 
 
 type Props ={
   restaurante: Restaurante
-    cardapio: Produto
+    cardapio: ItemDoMenu
 }
 
 const CardRestaurante = ({restaurante, cardapio }: Props) => {
@@ -22,7 +22,7 @@ const CardRestaurante = ({restaurante, cardapio }: Props) => {
   const dispatch = useDispatch()
 
   const addToCart = () => {
-    dispatch(add(restaurante))
+    dispatch(add(cardapio))
     dispatch(open())
   }
 
@@ -57,7 +57,7 @@ const CardRestaurante = ({restaurante, cardapio }: Props) => {
               {cardapio.descricao}
             </p>
             <p>{cardapio.porcao}</p>
-            <BotaoCardapio className="BotaoModal">Adicionar ao carrinho - {cardapio.preco}</BotaoCardapio>
+            <BotaoCardapio onClick={addToCart} className="BotaoModal">Adicionar ao carrinho - {cardapio.preco}</BotaoCardapio>
           </div>
         </ComponenteModal>
         <div className="overlay" onClick={fecharModal}></div>

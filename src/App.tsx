@@ -8,6 +8,7 @@ import Rotas from './rotas'
 import React from 'react';
 import { store } from './store';
 import Cart from './components/Cart';
+import ItemDoMenu from './pages/Home/index';
 
 function App() {
   return (
@@ -22,8 +23,7 @@ function App() {
           avaliacao: 0,
           descricao: '',
           capa: '',
-          cardapio: []
-        }}/>
+        }} cardapio={ItemDoMenu}/>
     </Provider>
     </>
   );
