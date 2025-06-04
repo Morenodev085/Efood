@@ -7,16 +7,17 @@ import { BotaoCardapio, CardDoRestaurante, CartMais,
 
   import { useDispatch } from "react-redux";
   import {add, open} from '../../store/reducers/cart'
-import  { Restaurante } from "../../pages/Home";
+import  { Produto, Restaurante } from "../../pages/Home";
 
 
 
 
 type Props ={
   restaurante: Restaurante
+    cardapio: Produto
 }
 
-const CardRestaurante = ({restaurante }: Props) => {
+const CardRestaurante = ({restaurante, cardapio }: Props) => {
 
   const dispatch = useDispatch()
 
@@ -36,10 +37,10 @@ const CardRestaurante = ({restaurante }: Props) => {
     <>
       {/* Card do restaurante */}
       <CardDoRestaurante>
-        <ImgCardapio src={restaurante.cardapio.foto} alt="Foto do alimento" />
-        <TituloCardRestaurante>{restaurante.cardapio.nome}</TituloCardRestaurante>
+        <ImgCardapio src={cardapio.foto} alt="Foto do alimento" />
+        <TituloCardRestaurante>{cardapio.nome}</TituloCardRestaurante>
         <DescricaoCardRestaurante>
-          {restaurante.cardapio.descricao}
+          {cardapio.descricao}
         </DescricaoCardRestaurante>
         <BotaoCardapio onClick={abrirModal}>Saiba mais</BotaoCardapio>
       </CardDoRestaurante>
@@ -48,15 +49,15 @@ const CardRestaurante = ({restaurante }: Props) => {
       <CartMais className={visivel ? "visivel" : ""}>
         <ComponenteModal className="container">
           <div>
-            <ImgCardapio src={restaurante.cardapio.foto} alt="Prato do restaurante" />
+            <ImgCardapio src={cardapio.foto} alt="Prato do restaurante" />
           </div>
           <div className="Infocard">
-            <TituloCardRestaurante>{restaurante.cardapio.nome}</TituloCardRestaurante>
+            <TituloCardRestaurante>{cardapio.nome}</TituloCardRestaurante>
             <p>
-              {restaurante.cardapio.descricao}
+              {cardapio.descricao}
             </p>
-            <p>{restaurante.cardapio.porcao}</p>
-            <BotaoCardapio className="BotaoModal">Adicionar ao carrinho - {preco}</BotaoCardapio>
+            <p>{cardapio.porcao}</p>
+            <BotaoCardapio className="BotaoModal">Adicionar ao carrinho - {cardapio.preco}</BotaoCardapio>
           </div>
         </ComponenteModal>
         <div className="overlay" onClick={fecharModal}></div>

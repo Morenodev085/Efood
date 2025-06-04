@@ -1,25 +1,25 @@
 import React from 'react';
 import CardRestaurante from "../CardProduto";
 import { ListaRestaurante } from "./styles";
-import { Restaurante } from '../../pages/Home';
+import {  Produto, Restaurante } from '../../pages/Home';
 
 type Props = {
   restaurante: Restaurante;
+  cardapio: Produto;
 };
 
-const CardapioRestaurante = ({ restaurante }: Props) => {
+const CardapioRestaurante = ({ restaurante, cardapio }: Props) => {
   return (
     <ListaRestaurante>
-      {restaurante.cardapio.map((item, ) => (
+
         <CardRestaurante
           id={restaurante.id}
-          preco={item.preco}
-          nome={item.nome}
-          descricao={item.descricao}
-          foto={item.foto}
-          porcao={item.porcao}
+          preco={cardapio.preco}
+          nome={cardapio.nome}
+          descricao={cardapio.descricao}
+          foto={cardapio.foto}
+          porcao={cardapio.porcao}
         />
-      ))}
     </ListaRestaurante>
   );
 };

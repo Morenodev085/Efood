@@ -11,14 +11,15 @@ export type Restaurante = {
   avaliacao: number;
   descricao: string;
   capa: string;
-  cardapio: {
+
+}
+
+export type Produto  = {
     foto: string;
     preco: number;
     nome: string;
     descricao: string;
     porcao: string;
-  }[];
-
 }
 
 
