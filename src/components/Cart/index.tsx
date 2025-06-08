@@ -10,7 +10,7 @@ import {
 } from './styles';
 import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../store";
-import { close } from '../../store/reducers/cart';
+import { close, remove  } from '../../store/reducers/cart';
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -24,6 +24,10 @@ const Cart = () => {
     return items.reduce((acumulador, item) => acumulador + item.preco, 0);
   };
 
+  const removeItem = (id: number) => {
+    dispatch(remove(id))
+  }
+
   return (
     <CartConteiner className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCard} />
@@ -35,7 +39,7 @@ const Cart = () => {
               <div>
                 <h3>{item.nome}</h3>
                 <span>R$ {item.preco.toFixed(2)}</span>
-                <CartLixeira>X</CartLixeira>
+                <CartLixeira onClick={() => removeItem(item.id)}>X</CartLixeira>
               </div>
             </CardItem>
           ))}
