@@ -11,10 +11,12 @@ export type Restaurante = {
   avaliacao: number;
   descricao: string;
   capa: string;
+  cardapio: ItemDoMenu[]
 
 }
 
 export type  ItemDoMenu  = {
+    id:number ;
     foto: string;
     preco: number ;
     nome: string;

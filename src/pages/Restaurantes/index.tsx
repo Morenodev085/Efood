@@ -30,7 +30,7 @@ const Restaurantes = () => {
     <>
       <HeaderRestaurante />
       <Banner restaurante={restaurante} />
-        <CardapioRestaurante restaurante={restaurante} cardapio={[]}  />
+        <CardapioRestaurante restaurante={restaurante}  />
       <Rodape />
     </>
   );
