@@ -10,6 +10,7 @@ export const Overlay = styled.div`
   height: 100%;
   background-color: #000;
   opacity: 0.7;
+  z-index: 9;
   `
 export const CartConteiner = styled.div`
 position: fixed;
@@ -28,8 +29,9 @@ color: ${cores.creme};
 
 export const Sidebar = styled.aside`
   background-color: ${cores.vermelho};
-  z-index: 1;
+  z-index: 10;
   padding: 32px 16px 0px 16px;
+  position: fixed;
 `
 export const Prices = styled.p`
 font-weight: bold;
