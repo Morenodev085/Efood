@@ -16,9 +16,17 @@ export const ImgCardapio = styled.img`
   margin-top: 8px;
 
 `
+export const ImgCardapioM = styled.img`
+  height: 280px;
+  width: 280px;
+  margin-top: 8px;
+  object-fit: cover;
+  padding: 16px 8px;
+
+`
 
 export const TituloCardRestaurante = styled.h3`
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 8px;
   margin-top: 4px;
   font-weight: bold;

@@ -3,7 +3,8 @@ import { useState } from "react";
 
 import { BotaoCardapio, CardDoRestaurante, CartMais,
   DescricaoCardRestaurante, ImgCardapio,
-  TituloCardRestaurante, ComponenteModal } from "./styles";
+  TituloCardRestaurante, ComponenteModal,
+  ImgCardapioM} from "./styles";
 
   import { useDispatch } from "react-redux";
   import {add, open} from '../../store/reducers/cart'
@@ -33,6 +34,14 @@ const CardRestaurante = ({restaurante, cardapio }: Props) => {
 
   // Função para fechar a modal
   const fecharModal = () => setVisivel(false);
+
+const formataPreco = (preco: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2
+  }).format(preco)
+};
   return (
     <>
       {/* Card do restaurante */}
@@ -49,15 +58,17 @@ const CardRestaurante = ({restaurante, cardapio }: Props) => {
       <CartMais className={visivel ? "visivel" : ""}>
         <ComponenteModal className="container">
           <div>
-            <ImgCardapio src={cardapio.foto} alt="Prato do restaurante" />
+            <ImgCardapioM src={cardapio.foto} alt="Prato do restaurante" />
           </div>
           <div className="Infocard">
             <TituloCardRestaurante>{cardapio.nome}</TituloCardRestaurante>
             <p>
               {cardapio.descricao}
             </p>
-            <p>{cardapio.porcao}</p>
-            <BotaoCardapio onClick={addToCart} className="BotaoModal">Adicionar ao carrinho - {cardapio.preco}</BotaoCardapio>
+            <p>Serve: {cardapio.porcao}</p>
+            <BotaoCardapio onClick={addToCart} className="BotaoModal">
+  Adicionar ao carrinho {formataPreco(cardapio.preco)}
+</BotaoCardapio>
           </div>
         </ComponenteModal>
         <div className="overlay" onClick={fecharModal}></div>
