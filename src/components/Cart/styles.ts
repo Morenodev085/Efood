@@ -32,6 +32,7 @@ export const Sidebar = styled.aside`
   z-index: 10;
   padding: 32px 16px 0px 16px;
   position: fixed;
+  height: 100%;
 `
 export const Prices = styled.p`
 font-weight: bold;

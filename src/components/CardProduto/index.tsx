@@ -66,7 +66,10 @@ const formataPreco = (preco: number) => {
               {cardapio.descricao}
             </p>
             <p>Serve: {cardapio.porcao}</p>
-            <BotaoCardapio onClick={addToCart} className="BotaoModal">
+            <BotaoCardapio onClick= {() => {
+              addToCart();
+            fecharModal();
+          }}  className="BotaoModal">
   Adicionar ao carrinho {formataPreco(cardapio.preco)}
 </BotaoCardapio>
           </div>
