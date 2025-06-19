@@ -19,7 +19,6 @@ export const ContainerBanner = styled.div`
     left: 0;
     content: '';
   }
-
   `
 
 export const InfoBanner = styled.div`
@@ -27,7 +26,7 @@ display: flex;
 flex-direction: column;
 color: ${cores.branco};
 object-fit: cover;
-z-index: 1;
+/* z-index: 1; */
 position: relative;
 max-width: 1200px;
 margin: auto auto;
@@ -37,7 +36,6 @@ padding-bottom: 40px;
 
 export const TituloBanner = styled.h2`
   font-size: 32px;
-
   margin-top: 120px;
 `
 

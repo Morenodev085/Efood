@@ -29,7 +29,7 @@ color: ${cores.creme};
 
 export const Sidebar = styled.aside`
   background-color: ${cores.vermelho};
-  z-index: 10;
+  z-index: 4;
   padding: 32px 16px 0px 16px;
   position: fixed;
   height: 100%;
