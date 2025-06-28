@@ -50,6 +50,7 @@ export const BotaoCardapio = styled.button`
 width: 304px;
 height: 24px;
 font-weight: bold;
+cursor: pointer;
 
 `
 export const CartMais = styled.div`

@@ -1,24 +1,26 @@
 import React from "react";
 import { useState } from "react";
 
-import { BotaoCardapio, CardDoRestaurante, CartMais,
+import {
+  BotaoCardapio, CardDoRestaurante, CartMais,
   DescricaoCardRestaurante, ImgCardapio,
   TituloCardRestaurante, ComponenteModal,
-  ImgCardapioM} from "./styles";
+  ImgCardapioM
+} from "./styles";
 
-  import { useDispatch } from "react-redux";
-  import {add, open} from '../../store/reducers/cart'
-import  { ItemDoMenu, Restaurante } from "../../pages/Home";
+import { useDispatch } from "react-redux";
+import { add, open } from '../../store/reducers/cart'
+import { ItemDoMenu, Restaurante } from "../../pages/Home";
 
 
 
 
-type Props ={
+type Props = {
   restaurante: Restaurante
-    cardapio: ItemDoMenu
+  cardapio: ItemDoMenu
 }
 
-const CardRestaurante = ({restaurante, cardapio }: Props) => {
+const CardRestaurante = ({ restaurante, cardapio }: Props) => {
 
   const dispatch = useDispatch()
 
@@ -35,13 +37,13 @@ const CardRestaurante = ({restaurante, cardapio }: Props) => {
   // Função para fechar a modal
   const fecharModal = () => setVisivel(false);
 
-const formataPreco = (preco: number) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-    minimumFractionDigits: 2
-  }).format(preco)
-};
+  const formataPreco = (preco: number) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2
+    }).format(preco)
+  };
   return (
     <>
       {/* Card do restaurante */}
@@ -66,12 +68,12 @@ const formataPreco = (preco: number) => {
               {cardapio.descricao}
             </p>
             <p>Serve: {cardapio.porcao}</p>
-            <BotaoCardapio onClick= {() => {
+            <BotaoCardapio onClick={() => {
               addToCart();
-            fecharModal();
-          }}  className="BotaoModal">
-  Adicionar ao carrinho {formataPreco(cardapio.preco)}
-</BotaoCardapio>
+              fecharModal();
+            }} className="BotaoModal">
+              Adicionar ao carrinho {formataPreco(cardapio.preco)}
+            </BotaoCardapio>
           </div>
         </ComponenteModal>
         <div className="overlay" onClick={fecharModal}></div>

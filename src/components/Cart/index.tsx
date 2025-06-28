@@ -46,7 +46,7 @@ const Cart = () => {
         </ul>
 
         <Prices>Valor total: R$ {getAllPrice().toFixed(2)}</Prices>
-        <BotaoCardapio>Continuar com a compra</BotaoCardapio>
+        <BotaoCardapio onClick={closeCard} >Continuar com a compra</BotaoCardapio>
       </Sidebar>
     </CartConteiner>
   );

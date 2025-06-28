@@ -9,6 +9,7 @@ import React from 'react';
 import { store } from './store';
 import Cart from './components/Cart';
 import ItemDoMenu from './pages/Home/index';
+import Checkout from './components/Checkout';
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
     <Provider store={store}>
       <EstiloGlobal />
       <RouterProvider router={Rotas} />
-      <Cart
-        />
+      <Cart/>
+      <Checkout />
     </Provider>
     </>
   );
