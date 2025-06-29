@@ -1,16 +1,14 @@
 import React from "react";
-import { BotaoCardapio } from "../CardProduto/styles";
 import {
-  Overlay,
   CartConteiner,
-  Sidebar,
   Prices,
   CardItem,
   CartLixeira
 } from './styles';
 import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../store";
-import { close, remove  } from '../../store/reducers/cart';
+import { close, remove } from '../../store/reducers/cart';
+import { BotaoCardapio, Overlay, Sidebar } from "../../styles";
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);

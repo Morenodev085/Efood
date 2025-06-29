@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 import {
-  BotaoCardapio, CardDoRestaurante, CartMais,
+CardDoRestaurante, CartMais,
   DescricaoCardRestaurante, ImgCardapio,
   TituloCardRestaurante, ComponenteModal,
   ImgCardapioM
@@ -11,6 +11,7 @@ import {
 import { useDispatch } from "react-redux";
 import { add, open } from '../../store/reducers/cart'
 import { ItemDoMenu, Restaurante } from "../../pages/Home";
+import { BotaoCardapio } from "../../styles";
 
 
 

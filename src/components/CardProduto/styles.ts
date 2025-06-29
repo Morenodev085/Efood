@@ -41,18 +41,8 @@ export const DescricaoCardRestaurante = styled.p`
   color: ${cores.creme};
 `
 
-export const BotaoCardapio = styled.button`
-  width: 90%;
-  border: none;
-  background-color: ${cores.creme};
-  color: ${cores.vermelho};
-  display: block;
-width: 304px;
-height: 24px;
-font-weight: bold;
-cursor: pointer;
 
-`
+
 export const CartMais = styled.div`
   position: fixed;
   top: 0;

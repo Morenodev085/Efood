@@ -1,7 +1,7 @@
 import React from 'react';
 import CardProduto from "../CardProduto";
 import { ListaRestaurante } from "./styles";
-import { ItemDoMenu, Restaurante } from '../../pages/Home';
+import { Restaurante } from '../../pages/Home';
 
 type Props = {
   restaurante: Restaurante;

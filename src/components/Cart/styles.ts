@@ -1,17 +1,7 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
-import { BotaoCardapio } from "../CardProduto/styles";
+import { BotaoCardapio, cores } from "../../styles";
 
-export const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0.7;
-  z-index: 3;
-  `
+
 export const CartConteiner = styled.div`
 position: fixed;
 top: 0;
@@ -27,13 +17,7 @@ color: ${cores.creme};
 }
 `
 
-export const Sidebar = styled.aside`
-  background-color: ${cores.vermelho};
-  z-index: 4;
-  padding: 32px 16px 0px 16px;
-  position: fixed;
-  height: 100%;
-`
+
 export const Prices = styled.p`
 font-weight: bold;
 font-size: 16px;
