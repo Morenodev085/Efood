@@ -9,4 +9,8 @@ export const ListaRestaurante = styled.div`
   max-width: 1200px; // Limite para o tamanho do contêiner
   margin-left: auto;
   margin-right: auto; // Centraliza o grid horizontalmente
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;

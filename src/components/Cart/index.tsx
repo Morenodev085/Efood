@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   CartConteiner,
   Prices,
   CardItem,
   CartLixeira
 } from './styles';
-import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../store";
 import { close, remove } from '../../store/reducers/cart';
 import { BotaoCardapio, Overlay, Sidebar } from "../../styles";
@@ -13,6 +15,7 @@ import { BotaoCardapio, Overlay, Sidebar } from "../../styles";
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
   const dispatch = useDispatch();
+  const naveget = useNavigate()
 
   const closeCard = () => {
     dispatch(close());
@@ -25,6 +28,11 @@ const Cart = () => {
   const removeItem = (id: number) => {
     dispatch(remove(id))
   }
+
+const goToCheckput = () => (
+  naveget('/checkout'),
+  closeCard()
+)
 
   return (
     <CartConteiner className={isOpen ? 'is-open' : ''}>
@@ -44,7 +52,7 @@ const Cart = () => {
         </ul>
 
         <Prices>Valor total: R$ {getAllPrice().toFixed(2)}</Prices>
-        <BotaoCardapio onClick={closeCard} >Continuar com a compra</BotaoCardapio>
+        <BotaoCardapio onClick={goToCheckput} >Continuar com a compra</BotaoCardapio>
       </Sidebar>
     </CartConteiner>
   );

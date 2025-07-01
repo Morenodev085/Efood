@@ -8,6 +8,7 @@ background-color: ${cores.vermelho};
 color: ${cores.branco};
 padding-bottom: 12px;
 padding-left: 8px;
+height: 100%;
 `
 
 export const ImgCardapio = styled.img`

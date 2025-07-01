@@ -20,6 +20,7 @@ export const EstiloGlobal = createGlobalStyle`
 body{
   background-color: ${cores.corDeFundo};
   color: ${cores.vermelho};
+  overflow-x: hidden;
 }
 `
 export const Logo = styled.img`
