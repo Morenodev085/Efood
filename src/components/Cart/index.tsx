@@ -1,5 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { openCheckout } from '../../store/reducers/checkout';
+
 
 import {
   CartConteiner,
@@ -28,10 +30,10 @@ const Cart = () => {
     dispatch(remove(id))
   }
 
-const goToCheckput = () => (
-  
+  const goToCheckput = () => {
+  dispatch(openCheckout())
   closeCard()
-)
+  }
 
   return (
     <CartConteiner className={isOpen ? 'is-open' : ''}>
@@ -58,3 +60,5 @@ const goToCheckput = () => (
 };
 
 export default Cart;
+
+

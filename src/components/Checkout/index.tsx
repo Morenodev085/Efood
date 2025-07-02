@@ -1,23 +1,27 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { RootReducer} from "../../store";
-import { close } from '../../store/reducers/checkout';
+import { RootReducer } from "../../store";
 import { AreaPergunta, AreaPerguntaDupla, CaixaDosBotoes, Campo, CheckoutConteiner, TituloEntrega, } from "./styles";
 import { BotaoCardapio, Overlay, Sidebar } from "../../styles";
+import { closeCheckout } from "../../store/reducers/checkout";
 
 const Checkout = () => {
-  const { isOpen} = useSelector((state: RootReducer) => state.cart);
+  const { isOpenCheckout } = useSelector((state: RootReducer) => state.checkout);
   const dispatch = useDispatch();
 
-  const closeCard = () => {
-    dispatch(close());
+  const closemodulo = () => {
+    dispatch(closeCheckout());
   };
 
+  const goToMessage = () => {
+    // dispatch(open())
+    closemodulo()
+  }
 
   return (
-    <CheckoutConteiner className={isOpen ? 'is-open' : ''} >
-      <Overlay onClick={closeCard} />
+    <CheckoutConteiner className={isOpenCheckout ? 'isOpenCheckout' : ''} >
+      <Overlay onClick={closemodulo} />
       <Sidebar>
         <TituloEntrega>Entrega</TituloEntrega>
         <AreaPergunta>
@@ -47,8 +51,8 @@ const Checkout = () => {
           <input id="complemento" type="text" />
         </AreaPergunta>
         <CaixaDosBotoes>
-        <BotaoCardapio style={{marginBottom: 8}}>Finalizar pagamento</BotaoCardapio>
-        <BotaoCardapio>Voltar para a edição de endereço</BotaoCardapio>
+          <BotaoCardapio style={{ marginBottom: 8 }} onClick={goToMessage}>Finalizar pagamento</BotaoCardapio>
+          <BotaoCardapio>Voltar para a edição de endereço</BotaoCardapio>
         </CaixaDosBotoes>
       </Sidebar>
     </CheckoutConteiner>

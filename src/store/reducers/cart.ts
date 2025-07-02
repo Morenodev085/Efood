@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-  import {  ItemDoMenu, Restaurante } from "../../pages/Home";
+  import {  ItemDoMenu } from "../../pages/Home";
 
 
 type CartState = {
   items:  ItemDoMenu[],
   isOpen: boolean
+  isOpenCheckout: boolean;
 }
 
 const initialState: CartState = {
   items: [],
-  isOpen: false
+  isOpen: false,
+  isOpenCheckout: false
 }
 
 const cartSlice = createSlice ({

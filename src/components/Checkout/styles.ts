@@ -18,8 +18,8 @@ ${BotaoCardapio} {
 
 }
 
-&.is-open{
-  display: none;
+&.isOpenCheckout{
+  display: flex;
 }
 `
 export const CaixaDosBotoes = styled.div`
