@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -15,7 +14,7 @@ import { BotaoCardapio, Overlay, Sidebar } from "../../styles";
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
   const dispatch = useDispatch();
-  const naveget = useNavigate()
+
 
   const closeCard = () => {
     dispatch(close());
@@ -30,7 +29,7 @@ const Cart = () => {
   }
 
 const goToCheckput = () => (
-  naveget('/checkout'),
+  
   closeCard()
 )
 

@@ -1,12 +1,10 @@
 import React from "react";
 
-
 import { useDispatch, useSelector } from "react-redux";
-import { RootReducer } from "../../store";
+import { RootReducer} from "../../store";
 import { close } from '../../store/reducers/checkout';
 import { AreaPergunta, AreaPerguntaDupla, CaixaDosBotoes, Campo, CheckoutConteiner, TituloEntrega, } from "./styles";
 import { BotaoCardapio, Overlay, Sidebar } from "../../styles";
-import { Formik } from "formik";
 
 const Checkout = () => {
   const { isOpen} = useSelector((state: RootReducer) => state.cart);
@@ -16,14 +14,9 @@ const Checkout = () => {
     dispatch(close());
   };
 
-// const form = Formik({
-//   initialValues: {
-    
-//   }
-// })
 
   return (
-    <CheckoutConteiner  >
+    <CheckoutConteiner className={isOpen ? 'is-open' : ''} >
       <Overlay onClick={closeCard} />
       <Sidebar>
         <TituloEntrega>Entrega</TituloEntrega>

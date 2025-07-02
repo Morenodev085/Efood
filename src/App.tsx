@@ -8,7 +8,6 @@ import Rotas from './rotas'
 import React from 'react';
 import { store } from './store';
 import Cart from './components/Cart';
-import ItemDoMenu from './pages/Home/index';
 import Checkout from './components/Checkout';
 
 function App() {
