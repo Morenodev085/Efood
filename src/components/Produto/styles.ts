@@ -17,9 +17,7 @@ height: auto;
   padding-bottom: 12px;
   padding-top: 8px;
 
-  @media (max-width: 768px) {
-    margin-left: 32px;
-  }
+
 `
 export const LinhaTitutlo = styled.div`
   display: flex;
