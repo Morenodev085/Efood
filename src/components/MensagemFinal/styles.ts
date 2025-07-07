@@ -19,7 +19,7 @@ ${BotaoCardapio} {
 
 }
 
-&.isOpenCheckout{
+&.isOpenMessage{
   display: flex;
 }
 `

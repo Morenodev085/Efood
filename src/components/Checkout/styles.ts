@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import { BotaoCardapio, cores } from "../../styles"
 
+interface VisibleProps{
+  isVisible:  boolean;
+}
 
 export const CheckoutConteiner = styled.div`
 position: fixed;
@@ -70,4 +73,16 @@ export const Campo = styled.div`
 display: flex;
 flex-direction: column;
 margin: 8px;
+`
+
+export const CampoEndereco = styled.div<VisibleProps>`
+display: ${(props) => (props.isVisible? 'flex' : 'none')};
+flex-direction: column;
+
+
+`
+export const CampoCartao = styled.div<VisibleProps>`
+display: ${(props) => (props.isVisible? 'none' : 'flex')};
+flex-direction: column;
+
 `

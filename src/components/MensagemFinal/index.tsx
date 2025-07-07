@@ -3,20 +3,20 @@ import { BotaoCardapio, Overlay, Sidebar } from "../../styles"
 import { MessaageConteiner, Text, Paragrafo, Title } from './styles'
 import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../store";
-import { closeCheckout } from "../../store/reducers/checkout";
+import { closeMessage } from "../../store/reducers/message";
 
 
 const ClosingMessage = () => {
-    const { isOpenMessage } = useSelector((state: RootReducer) => state.checkout);
+    const { isOpenMessage } = useSelector((state: RootReducer) => state.message);
     const dispatch = useDispatch();
 
     const closemodulo = () => {
-        dispatch(closeCheckout());
+        dispatch(closeMessage());
     };
 
 
     return (
-        <MessaageConteiner className={isOpenMessage ? 'isOpenCheckout' : ''}  >
+        <MessaageConteiner className={isOpenMessage ? 'isOpenMessage' : ''}  >
             <Overlay onClick={closemodulo} />
             <Sidebar>
                 <Paragrafo>
@@ -30,7 +30,7 @@ const ClosingMessage = () => {
                         Esperamos que desfrute de uma deliciosa e agradável experiência gastronômica. Bom apetite!
                     </Text>
                 </Paragrafo>
-                <BotaoCardapio>Concluir</BotaoCardapio>
+                <BotaoCardapio onClick={closemodulo}>Concluir</BotaoCardapio>
             </Sidebar>
         </MessaageConteiner>
     )
