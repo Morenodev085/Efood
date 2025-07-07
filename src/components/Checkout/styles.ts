@@ -5,7 +5,7 @@ interface VisibleProps{
   isVisible:  boolean;
 }
 
-export const CheckoutConteiner = styled.div`
+export const CheckoutConteiner = styled.form`
 position: fixed;
 top: 0;
 left: 0;
