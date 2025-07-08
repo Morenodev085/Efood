@@ -45,18 +45,18 @@ const Checkout = () => {
 
     },
     validationSchema: Yup.object({
-  recptor: Yup.string().min(3, 'O nome precisa ter pelo menos 3 caracteres').required('O campo é obrigatório'),
-  endereco: Yup.string().min(5, 'O endereço precisa ter pelo menos 5 caracteres').required('O campo é obrigatório'),
-  cidade: Yup.string().min(5, 'A cidade precisa ter pelo menos 5 caracteres').required('O campo é obrigatório'),
-  cep: Yup.string().matches(/^\d{8}$/, 'O CEP deve ter 8 dígitos numéricos').required('O campo é obrigatório'),
-  numero: Yup.string().required('O campo é obrigatório'),
-  complemento: Yup.string().notRequired(),
-  nomeCartao: Yup.string().min(3, 'O nome precisa ter pelo menos 3 caracteres').required('O campo é obrigatório'),
-  numeroCartao: Yup.string().matches(/^\d{16}$/, 'O número do cartão deve ter 16 dígitos').required('O campo é obrigatório'),
-  CVVNumber: Yup.string().matches(/^\d{3}$/, 'O CVV deve ter 3 dígitos').required('O campo é obrigatório'),
-  mesDoVencimento: Yup.string().matches(/^(0[1-9]|1[0-2])$/, 'Digite um mês válido (01 a 12)').required('Campo obrigatório'),
-  anoDoVencimento: Yup.string().matches(/^\d{4}$/, 'Digite um ano com 4 dígitos').required('Campo obrigatório'),
-}),
+      recptor: Yup.string().min(3, 'O nome precisa ter pelo menos 3 caracteres').required('O campo é obrigatório'),
+      endereco: Yup.string().min(5, 'O endereço precisa ter pelo menos 5 caracteres').required('O campo é obrigatório'),
+      cidade: Yup.string().min(5, 'A cidade precisa ter pelo menos 5 caracteres').required('O campo é obrigatório'),
+      cep: Yup.string().matches(/^\d{8}$/, 'O CEP deve ter 8 dígitos numéricos').required('O campo é obrigatório'),
+      numero: Yup.string().required('O campo é obrigatório'),
+      complemento: Yup.string().notRequired(),
+      nomeCartao: Yup.string().min(3, 'O nome precisa ter pelo menos 3 caracteres').required('O campo é obrigatório'),
+      numeroCartao: Yup.string().matches(/^\d{16}$/, 'O número do cartão deve ter 16 dígitos').required('O campo é obrigatório'),
+      CVVNumber: Yup.string().matches(/^\d{3}$/, 'O CVV deve ter 3 dígitos').required('O campo é obrigatório'),
+      mesDoVencimento: Yup.string().matches(/^(0[1-9]|1[0-2])$/, 'Digite um mês válido (01 a 12)').required('Campo obrigatório'),
+      anoDoVencimento: Yup.string().matches(/^\d{4}$/, 'Digite um ano com 4 dígitos').required('Campo obrigatório'),
+    }),
 
     onSubmit: (values) => {
       console.log('submit triggered')
@@ -69,17 +69,17 @@ const Checkout = () => {
     return items.reduce((acumulador, item) => acumulador + item.preco, 0);
   };
 
-const getErrorMessage = (fieldName: string, massage?: string) => {
-  const isTouched = fieldName in form.touched
-  const isError = fieldName in form.errors
+  const getErrorMessage = (fieldName: string, massage?: string) => {
+    const isTouched = fieldName in form.touched
+    const isError = fieldName in form.errors
 
-  if (isTouched && isError) return massage
-}
+    if (isTouched && isError) return massage
+  }
 
   return (
     <CheckoutConteiner className={isOpenCheckout ? 'isOpenCheckout' : ''} >
-        <Overlay onClick={closemodulo} />
-        <Sidebar>
+      <Overlay onClick={closemodulo} />
+      <Sidebar>
         <form onSubmit={form.handleSubmit} >
           {/* delivery addresss */}
           <CampoEndereco isVisible={mostrarEndereco} >
@@ -88,7 +88,7 @@ const getErrorMessage = (fieldName: string, massage?: string) => {
               <label htmlFor="recptor">Quem ira receber</label>
               <input id="recptor" type="text" name="recptor" value={form.values.recptor} onChange={form.handleChange}
                 onBlur={form.handleBlur} />
-                <small>{getErrorMessage('recptor', form.errors.recptor)}</small>
+              <small>{getErrorMessage('recptor', form.errors.recptor)}</small>
             </AreaPergunta>
             <AreaPergunta>
               <label htmlFor="endereco">Endereco</label>
@@ -130,7 +130,6 @@ const getErrorMessage = (fieldName: string, massage?: string) => {
               <input id="nomeCartao" type="text" name="nomeCartao" value={form.values.nomeCartao} onChange={form.handleChange}
                 onBlur={form.handleBlur} />
             </AreaPergunta>
-
             <AreaPerguntaDupla>
               <Campo>
                 <label htmlFor="numeroCartao">Número do cartão</label>
@@ -162,9 +161,9 @@ const getErrorMessage = (fieldName: string, massage?: string) => {
               <BotaoCardapio onClick={alteraCampo}>Voltar para a edição de endereço</BotaoCardapio>
             </CaixaDosBotoes>
           </CampoCartao>
-    </form>
-        </Sidebar >
-      </CheckoutConteiner >
+        </form>
+      </Sidebar >
+    </CheckoutConteiner >
   );
 };
 
