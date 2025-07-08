@@ -10,8 +10,8 @@ import { useFormik } from "formik";
 import * as Yup from 'yup'
 
 const Checkout = () => {
-    const { items } = useSelector((state: RootReducer) => state.cart);
-  
+  const { items } = useSelector((state: RootReducer) => state.cart);
+
   const { isOpenCheckout } = useSelector((state: RootReducer) => state.checkout);
   const [mostrarEndereco, setMostrarEndereco] = useState(true)
   const dispatch = useDispatch();
@@ -39,118 +39,132 @@ const Checkout = () => {
       complemento: '',
       nomeCartao: '',
       numeroCartao: '',
-      CVVNumero: '',
+      CVVNumber: '',
       mesDoVencimento: '',
       anoDoVencimento: ''
 
     },
     validationSchema: Yup.object({
-      recptor: Yup.string().min(3, 'O nome Precisa ter pelo menos 3 caracteres').required('O campo e obrigatorio'),
-      endereco: Yup.string().min(5, 'O nome Precisa ter pelo menos 5 caracteres').required('O campo e obrigatorio'),
-      cidade: Yup.string().min(5, 'O nome Precisa ter pelo menos 5 caracteres').required('O campo e obrigatorio'),
-      cep: Yup.number().min(8, 'O cep deve ser preenchido somente com numeros').max(8).required('O campo e obrigatorio'),
-      numero: Yup.number().required('O campo e obrigatorio'),
-      complemento: Yup.string().notRequired(),
-      nomeCartao: Yup.string().min(3, 'o minimo par aesse campo sao 3 caracteres').required('O campo e obrigatorio'),
-      numeroCartao: Yup.number().min(16,'O cmapo tem precisa ter 16 caracteres').required('O campo e obrigatorio'),
-      CVVNumero: Yup.number().min(3,'numero minimo para o cvv sao 3 caracteres').max(3).required('campo obrigatori'),
-      mesDoVencimento: Yup.number().min(2,'O mes do venciemnto deve conter pelo menos 2 caractes').required('Camppo obrigatio'),
-      anoDoVencimento: Yup.number().min(4,'Campo do ano deve conter no minimo 4 caracteres').max(4).required('Campoobrigatorio')
-    }),
-    onSubmit: (value) => {
-      console.log(value)
+  recptor: Yup.string().min(3, 'O nome precisa ter pelo menos 3 caracteres').required('O campo é obrigatório'),
+  endereco: Yup.string().min(5, 'O endereço precisa ter pelo menos 5 caracteres').required('O campo é obrigatório'),
+  cidade: Yup.string().min(5, 'A cidade precisa ter pelo menos 5 caracteres').required('O campo é obrigatório'),
+  cep: Yup.string().matches(/^\d{8}$/, 'O CEP deve ter 8 dígitos numéricos').required('O campo é obrigatório'),
+  numero: Yup.string().required('O campo é obrigatório'),
+  complemento: Yup.string().notRequired(),
+  nomeCartao: Yup.string().min(3, 'O nome precisa ter pelo menos 3 caracteres').required('O campo é obrigatório'),
+  numeroCartao: Yup.string().matches(/^\d{16}$/, 'O número do cartão deve ter 16 dígitos').required('O campo é obrigatório'),
+  CVVNumber: Yup.string().matches(/^\d{3}$/, 'O CVV deve ter 3 dígitos').required('O campo é obrigatório'),
+  mesDoVencimento: Yup.string().matches(/^(0[1-9]|1[0-2])$/, 'Digite um mês válido (01 a 12)').required('Campo obrigatório'),
+  anoDoVencimento: Yup.string().matches(/^\d{4}$/, 'Digite um ano com 4 dígitos').required('Campo obrigatório'),
+}),
+
+    onSubmit: (values) => {
+      console.log('submit triggered')
+      console.log(values);
+      goToMessage();
     }
   })
 
-    const getAllPrice = () => {
+  const getAllPrice = () => {
     return items.reduce((acumulador, item) => acumulador + item.preco, 0);
   };
 
+const getErrorMessage = (fieldName: string, massage?: string) => {
+  const isTouched = fieldName in form.touched
+  const isError = fieldName in form.errors
+
+  if (isTouched && isError) return massage
+}
+
   return (
+    <CheckoutConteiner className={isOpenCheckout ? 'isOpenCheckout' : ''} >
+        <Overlay onClick={closemodulo} />
+        <Sidebar>
+        <form onSubmit={form.handleSubmit} >
+          {/* delivery addresss */}
+          <CampoEndereco isVisible={mostrarEndereco} >
+            <TituloEntrega>Entrega</TituloEntrega>
+            <AreaPergunta>
+              <label htmlFor="recptor">Quem ira receber</label>
+              <input id="recptor" type="text" name="recptor" value={form.values.recptor} onChange={form.handleChange}
+                onBlur={form.handleBlur} />
+                <small>{getErrorMessage('recptor', form.errors.recptor)}</small>
+            </AreaPergunta>
+            <AreaPergunta>
+              <label htmlFor="endereco">Endereco</label>
+              <input id="endereco" type="text" name="endereco" value={form.values.endereco} onChange={form.handleChange}
+                onBlur={form.handleBlur} />
+            </AreaPergunta>
+            <AreaPergunta>
+              <label htmlFor="cidade">Cidade</label>
+              <input id="cidade" type="text" name="cidade" value={form.values.cidade} onChange={form.handleChange}
+                onBlur={form.handleBlur} />
+            </AreaPergunta>
+            <AreaPerguntaDupla>
+              <Campo>
+                <label htmlFor="cep">CEP</label>
+                <input id="cep" type="text" name="cep" value={form.values.cep} onChange={form.handleChange}
+                  onBlur={form.handleBlur} />
+              </Campo>
+              <Campo>
+                <label htmlFor="numero">Numero</label>
+                <input id="numero" type="text" name="numero" value={form.values.numero} onChange={form.handleChange}
+                  onBlur={form.handleBlur} />
+              </Campo>
+            </AreaPerguntaDupla>
+            <AreaPergunta>
+              <label htmlFor="complemento">Complemento (opcional)</label>
+              <input id="complemento" type="text" name="complemento" value={form.values.complemento} onChange={form.handleChange}
+                onBlur={form.handleBlur} />
+            </AreaPergunta>
+            <CaixaDosBotoes>
+              <BotaoCardapio type="button" style={{ marginBottom: 8 }} onClick={alteraCampo}>Ir para pagamento</BotaoCardapio>
+              <BotaoCardapio onClick={closemodulo} >Voltar para o carrinho</BotaoCardapio>
+            </CaixaDosBotoes>
+          </CampoEndereco>
+          {/* Pay card */}
+          <CampoCartao isVisible={mostrarEndereco}>
+            <TituloEntrega>Pagamento - Valor a pagar {getAllPrice().toFixed(2)}</TituloEntrega>
+            <AreaPergunta>
+              <label htmlFor="nomeCartao">Nome do Cartão</label>
+              <input id="nomeCartao" type="text" name="nomeCartao" value={form.values.nomeCartao} onChange={form.handleChange}
+                onBlur={form.handleBlur} />
+            </AreaPergunta>
 
-    <CheckoutConteiner onSubmit={form.handleSubmit} className={isOpenCheckout ? 'isOpenCheckout' : ''} >
-      <Overlay onClick={closemodulo} />
-      <Sidebar>
-        {/* delivery addresss */}
-        <CampoEndereco isVisible={mostrarEndereco} >
-          <TituloEntrega>Entrega</TituloEntrega>
-          <AreaPergunta>
-            <label htmlFor="recptor">Quem ira receber</label>
-            <input id="recptor" type="text" name="recptor" value={form.values.recptor} onChange={form.handleChange}
-              onBlur={form.handleBlur} />
-          </AreaPergunta>
-          <AreaPergunta>
-            <label htmlFor="endereco">Endereco</label>
-            <input id="endereco" type="text" name="endereco" value={form.values.endereco} onChange={form.handleChange}
-              onBlur={form.handleBlur} />
-          </AreaPergunta>
-          <AreaPergunta>
-            <label htmlFor="cidade">Cidade</label>
-            <input id="cidade" type="text" name="cidade" value={form.values.cidade} onChange={form.handleChange}
-              onBlur={form.handleBlur} />
-          </AreaPergunta>
-          <AreaPerguntaDupla>
-            <Campo>
-              <label htmlFor="cep">CEP</label>
-              <input id="cep" type="number" name="cep" value={form.values.cep} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-            </Campo>
-            <Campo>
-              <label htmlFor="numero">Numero</label>
-              <input id="numero" type="number" name="numero" value={form.values.numero} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-            </Campo>
-          </AreaPerguntaDupla>
-          <AreaPergunta>
-            <label htmlFor="complemento">Complemento (opcional)</label>
-            <input id="complemento" type="text" name="complemento" value={form.values.complemento} onChange={form.handleChange}
-              onBlur={form.handleBlur} />
-          </AreaPergunta>
-          <CaixaDosBotoes>
-            <BotaoCardapio style={{ marginBottom: 8 }} onClick={alteraCampo}>Finalizar pagamento</BotaoCardapio>
-            <BotaoCardapio onClick={closemodulo} >Voltar para o carrinho</BotaoCardapio>
-          </CaixaDosBotoes>
-        </CampoEndereco>
-        {/* Pay card */}
-        <CampoCartao isVisible={mostrarEndereco}>
-          <TituloEntrega>Pagamento - Valor a pagar {getAllPrice().toFixed(2)}</TituloEntrega>
-          <AreaPergunta>
-            <label htmlFor="nomeCartao">Nome do Cartão</label>
-            <input id="nomeCartao" type="text" name="nomeCartao" value={form.values.nomeCartao} onChange={form.handleChange}
-              onBlur={form.handleBlur} />
-          </AreaPergunta>
-
-          <AreaPerguntaDupla>
-            <Campo>
-              <label htmlFor="numeroCartao">Número do cartão</label>
-              <input id="numeroCartao" type="number" name="numeroCartao" value={form.values.numeroCartao} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-            </Campo>
-            <Campo>
-              <label htmlFor="CVVNumber">CVV</label>
-              <input id="CVVNumber" type="number" name="CVVNumber" value={form.values.CVVNumero} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-            </Campo>
-          </AreaPerguntaDupla>
-          <AreaPerguntaDupla>
-            <Campo>
-              <label htmlFor="mesDoVencimento">Mês de vencimento</label>
-              <input id="mesDoVencimento" type="number" name="mesDoVencimento" value={form.values.mesDoVencimento} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-            </Campo>
-            <Campo>
-              <label htmlFor="anoDoVencimento">Ano de vencimento</label>
-              <input id="anoDoVencimento" type="number" name="anoDoVencimento" value={form.values.anoDoVencimento} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-            </Campo>
-          </AreaPerguntaDupla>
-          <CaixaDosBotoes>
-            <BotaoCardapio type="submit" style={{ marginBottom: 8 }} onClick={goToMessage}>Finalizar pagamento</BotaoCardapio>
-            <BotaoCardapio onClick={alteraCampo}>Voltar para a edição de endereço</BotaoCardapio>
-          </CaixaDosBotoes>
-        </CampoCartao>
-      </Sidebar >
-    </CheckoutConteiner >
+            <AreaPerguntaDupla>
+              <Campo>
+                <label htmlFor="numeroCartao">Número do cartão</label>
+                <input id="numeroCartao" type="text" name="numeroCartao" value={form.values.numeroCartao} onChange={form.handleChange}
+                  onBlur={form.handleBlur} />
+              </Campo>
+              <Campo>
+                <label htmlFor="CVVNumber">CVV</label>
+                <input id="CVVNumber" type="text" name="CVVNumber" value={form.values.CVVNumber} onChange={form.handleChange}
+                  onBlur={form.handleBlur} />
+              </Campo>
+            </AreaPerguntaDupla>
+            <AreaPerguntaDupla>
+              <Campo>
+                <label htmlFor="mesDoVencimento">Mês de vencimento</label>
+                <input id="mesDoVencimento" type="text" name="mesDoVencimento" value={form.values.mesDoVencimento} onChange={form.handleChange}
+                  onBlur={form.handleBlur} />
+              </Campo>
+              <Campo>
+                <label htmlFor="anoDoVencimento">Ano de vencimento</label>
+                <input id="anoDoVencimento" type="text" name="anoDoVencimento" value={form.values.anoDoVencimento} onChange={form.handleChange}
+                  onBlur={form.handleBlur} />
+              </Campo>
+            </AreaPerguntaDupla>
+            <CaixaDosBotoes>
+              <BotaoCardapio type="submit" style={{ marginBottom: 8 }} >
+                Finalizar pagamento
+              </BotaoCardapio>
+              <BotaoCardapio onClick={alteraCampo}>Voltar para a edição de endereço</BotaoCardapio>
+            </CaixaDosBotoes>
+          </CampoCartao>
+    </form>
+        </Sidebar >
+      </CheckoutConteiner >
   );
 };
 
