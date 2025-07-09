@@ -6,15 +6,15 @@ type Product = {
   price: number
 }
 
-type PurchasePlayload = {
-  product: Product[]
+type PurchasePayload  = {
+product: Product[]
   delivery: {
     receiver: String
     address: {
       description: string
       city: string
-      zpiCode: string
-      number: number
+      zipCode: string
+      number: string
       complement: string
     }
   },
@@ -22,10 +22,10 @@ type PurchasePlayload = {
     card: {
       name: string
       number: number
-      code: 123
+      code: number
       expires:{
-        month: 12
-        year: 1234
+        month: number
+        year: number
       }
     }
   }
@@ -38,10 +38,18 @@ const api = createApi({
   endpoints: (builder) => ({
     getFeatureRestaurante: builder.query<Restaurante,void>({
       query: () => 'Cardapio'
-    })
+    }),
+    purchease: builder.mutation<any, PurchasePayload >({
+      query: (body) => ({
+        url: '/checkout',
+        method: 'POST',
+        body
+      })
+    }
+    )
   })
 })
 
-export const {useGetFeatureRestauranteQuery} = api
+export const {useGetFeatureRestauranteQuery, usePurcheaseMutation} = api
 
 export default api

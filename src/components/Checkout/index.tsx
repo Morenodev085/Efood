@@ -8,9 +8,11 @@ import { BotaoCardapio, Overlay, Sidebar } from "../../styles";
 import { closeCheckout } from "../../store/reducers/checkout";
 import { useFormik } from "formik";
 import * as Yup from 'yup'
+import { usePurcheaseMutation } from "../../services/api";
 
 const Checkout = () => {
   const { items } = useSelector((state: RootReducer) => state.cart);
+  const [purchease, { isLoading, isError, data }] = usePurcheaseMutation()
 
   const { isOpenCheckout } = useSelector((state: RootReducer) => state.checkout);
   const [mostrarEndereco, setMostrarEndereco] = useState(true)
@@ -31,7 +33,7 @@ const Checkout = () => {
 
   const form = useFormik({
     initialValues: {
-      recptor: '',
+      receptor: '',
       endereco: '',
       cidade: '',
       cep: '',
@@ -45,7 +47,7 @@ const Checkout = () => {
 
     },
     validationSchema: Yup.object({
-      recptor: Yup.string().min(3, 'O nome precisa ter pelo menos 3 caracteres').required('O campo é obrigatório'),
+      receptor: Yup.string().min(3, 'O nome precisa ter pelo menos 3 caracteres').required('O campo é obrigatório'),
       endereco: Yup.string().min(5, 'O endereço precisa ter pelo menos 5 caracteres').required('O campo é obrigatório'),
       cidade: Yup.string().min(5, 'A cidade precisa ter pelo menos 5 caracteres').required('O campo é obrigatório'),
       cep: Yup.string().matches(/^\d{8}$/, 'O CEP deve ter 8 dígitos numéricos').required('O campo é obrigatório'),
@@ -59,11 +61,39 @@ const Checkout = () => {
     }),
 
 onSubmit: (values) => {
-  console.log('submit triggered')
-  console.log(values);
-  goToMessage();
-}
+  console.log('form errors', form.errors)
+    console.log('Submitting:', values)
+  purchease({
+    product: [{
+      id: 1,
+      price:10
+    }],
+    delivery: {
+      receiver: values.receptor,
+      address: {
+        description: values.endereco,
+        city: values.cidade,
+        zipCode: values.cep,
+        number: String(values.numero), // string
+        complement: values.complemento
+      }
+    },
+    payment: {
+      card: {
+        name: values.nomeCartao,
+        number: Number(values.numeroCartao),  // converter para number
+        code: Number(values.CVVNumber),       // converter para number
+        expires: {
+          month: Number(values.mesDoVencimento),  // converter para number
+          year: Number(values.anoDoVencimento)    // converter para number
+        }
+      }
+    }
   })
+
+  goToMessage()
+}})
+
 
   const getAllPrice = () => {
     return items.reduce((acumulador, item) => acumulador + item.preco, 0);
@@ -86,10 +116,10 @@ onSubmit: (values) => {
           <CampoEndereco isVisible={mostrarEndereco} >
             <TituloEntrega>Entrega</TituloEntrega>
             <AreaPergunta>
-              <label htmlFor="recptor">Quem ira receber</label>
-              <input id="recptor" type="text" name="recptor" value={form.values.recptor} onChange={form.handleChange}
+              <label htmlFor="receptor">Quem ira receber</label>
+              <input id="receptor" type="text" name="receptor" value={form.values.receptor} onChange={form.handleChange}
                 onBlur={form.handleBlur} />
-              <small>{getErrorMessage('recptor', form.errors.recptor)}</small>
+              <small>{getErrorMessage('receptor', form.errors.receptor)}</small>
             </AreaPergunta>
             <AreaPergunta>
               <label htmlFor="endereco">Endereco</label>
@@ -112,7 +142,7 @@ onSubmit: (values) => {
               </Campo>
               <Campo>
                 <label htmlFor="numero">Numero</label>
-                <input id="numero" type="text" name="numero" value={form.values.numero} onChange={form.handleChange}
+                <input id="numero" type="number" name="numero" value={form.values.numero} onChange={form.handleChange}
                   onBlur={form.handleBlur} />
                 <small>{getErrorMessage('numero', form.errors.numero)}</small>
               </Campo>
