@@ -58,11 +58,11 @@ const Checkout = () => {
       anoDoVencimento: Yup.string().matches(/^\d{4}$/, 'Digite um ano com 4 dígitos').required('Campo obrigatório'),
     }),
 
-    onSubmit: (values) => {
-      console.log('submit triggered')
-      console.log(values);
-      goToMessage();
-    }
+onSubmit: (values) => {
+  console.log('submit triggered')
+  console.log(values);
+  goToMessage();
+}
   })
 
   const getAllPrice = () => {
@@ -71,9 +71,10 @@ const Checkout = () => {
 
   const getErrorMessage = (fieldName: string, massage?: string) => {
     const isTouched = fieldName in form.touched
-    const isError = fieldName in form.errors
+    const isInvalid = fieldName in form.errors
 
-    if (isTouched && isError) return massage
+    if (isTouched && isInvalid) return massage
+    return ''
   }
 
   return (
@@ -94,22 +95,26 @@ const Checkout = () => {
               <label htmlFor="endereco">Endereco</label>
               <input id="endereco" type="text" name="endereco" value={form.values.endereco} onChange={form.handleChange}
                 onBlur={form.handleBlur} />
+              <small>{getErrorMessage('endereco', form.errors.endereco)}</small>
             </AreaPergunta>
             <AreaPergunta>
               <label htmlFor="cidade">Cidade</label>
               <input id="cidade" type="text" name="cidade" value={form.values.cidade} onChange={form.handleChange}
                 onBlur={form.handleBlur} />
+              <small>{getErrorMessage('cidade', form.errors.cidade)}</small>
             </AreaPergunta>
             <AreaPerguntaDupla>
               <Campo>
                 <label htmlFor="cep">CEP</label>
                 <input id="cep" type="text" name="cep" value={form.values.cep} onChange={form.handleChange}
                   onBlur={form.handleBlur} />
+                <small>{getErrorMessage('cep', form.errors.cep)}</small>
               </Campo>
               <Campo>
                 <label htmlFor="numero">Numero</label>
                 <input id="numero" type="text" name="numero" value={form.values.numero} onChange={form.handleChange}
                   onBlur={form.handleBlur} />
+                <small>{getErrorMessage('numero', form.errors.numero)}</small>
               </Campo>
             </AreaPerguntaDupla>
             <AreaPergunta>
@@ -123,23 +128,26 @@ const Checkout = () => {
             </CaixaDosBotoes>
           </CampoEndereco>
           {/* Pay card */}
-          <CampoCartao isVisible={mostrarEndereco}>
+          <CampoCartao isVisible={!mostrarEndereco}>
             <TituloEntrega>Pagamento - Valor a pagar {getAllPrice().toFixed(2)}</TituloEntrega>
             <AreaPergunta>
               <label htmlFor="nomeCartao">Nome do Cartão</label>
               <input id="nomeCartao" type="text" name="nomeCartao" value={form.values.nomeCartao} onChange={form.handleChange}
                 onBlur={form.handleBlur} />
+              <small>{getErrorMessage('nomeCartao', form.errors.nomeCartao)}</small>
             </AreaPergunta>
             <AreaPerguntaDupla>
               <Campo>
                 <label htmlFor="numeroCartao">Número do cartão</label>
                 <input id="numeroCartao" type="text" name="numeroCartao" value={form.values.numeroCartao} onChange={form.handleChange}
                   onBlur={form.handleBlur} />
+                <small>{getErrorMessage('numeroCartao', form.errors.numeroCartao)}</small>
               </Campo>
               <Campo>
                 <label htmlFor="CVVNumber">CVV</label>
                 <input id="CVVNumber" type="text" name="CVVNumber" value={form.values.CVVNumber} onChange={form.handleChange}
                   onBlur={form.handleBlur} />
+                <small>{getErrorMessage('CVVNumber', form.errors.CVVNumber)}</small>
               </Campo>
             </AreaPerguntaDupla>
             <AreaPerguntaDupla>
@@ -147,11 +155,13 @@ const Checkout = () => {
                 <label htmlFor="mesDoVencimento">Mês de vencimento</label>
                 <input id="mesDoVencimento" type="text" name="mesDoVencimento" value={form.values.mesDoVencimento} onChange={form.handleChange}
                   onBlur={form.handleBlur} />
+                <small>{getErrorMessage('mesDoVencimento', form.errors.mesDoVencimento)}</small>
               </Campo>
               <Campo>
                 <label htmlFor="anoDoVencimento">Ano de vencimento</label>
                 <input id="anoDoVencimento" type="text" name="anoDoVencimento" value={form.values.anoDoVencimento} onChange={form.handleChange}
                   onBlur={form.handleBlur} />
+                <small>{getErrorMessage('anoDoVencimento', form.errors.anoDoVencimento)}</small>
               </Campo>
             </AreaPerguntaDupla>
             <CaixaDosBotoes>

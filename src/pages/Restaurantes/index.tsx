@@ -32,6 +32,7 @@ const Restaurantes = () => {
       <Banner restaurante={restaurante} />
         <CardapioRestaurante restaurante={restaurante}  />
       <Rodape />
+      
     </>
   );
 }

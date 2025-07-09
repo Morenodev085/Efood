@@ -82,7 +82,7 @@ flex-direction: column;
 
 `
 export const CampoCartao = styled.div<VisibleProps>`
-display: ${(props) => (props.isVisible? 'none' : 'flex')};
+display: ${(props) => (props.isVisible? 'flex' : 'none')};
 flex-direction: column;
 
 `
