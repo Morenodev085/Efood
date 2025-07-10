@@ -4,9 +4,11 @@ import { MessaageConteiner, Text, Paragrafo, Title } from './styles'
 import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../store";
 import { closeMessage } from "../../store/reducers/message";
+import { usePurcheaseMutation } from "../../services/api";
 
 
 const ClosingMessage = () => {
+    
     const { isOpenMessage } = useSelector((state: RootReducer) => state.message);
     const dispatch = useDispatch();
 
@@ -21,7 +23,7 @@ const ClosingMessage = () => {
             <Sidebar>
                 <Paragrafo>
                     <Title>
-                        Pedido realizado - Ordem_id
+                        Pedido realizado - 
                     </Title>
                     <Text>
                         Estamos felizes em informar que seu pedido já está em processo de preparação e, em breve, será entregue no endereço fornecido.<br /><br />

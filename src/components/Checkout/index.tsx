@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { openMessage } from '../../store/reducers/message';
 
 import { useDispatch, useSelector } from "react-redux";
@@ -12,11 +12,11 @@ import { usePurcheaseMutation } from "../../services/api";
 
 const Checkout = () => {
   const { items } = useSelector((state: RootReducer) => state.cart);
-  const [purchease, { isLoading, isError, data }] = usePurcheaseMutation()
-
+  const [purchease, { isLoading, isError, data, isSuccess }] = usePurcheaseMutation()
   const { isOpenCheckout } = useSelector((state: RootReducer) => state.checkout);
   const [mostrarEndereco, setMostrarEndereco] = useState(true)
   const dispatch = useDispatch();
+
 
   const alteraCampo = () => {
     setMostrarEndereco((prev) => !prev)
@@ -30,6 +30,13 @@ const Checkout = () => {
     dispatch(openMessage())
     closemodulo()
   }
+
+  useEffect(() => {
+    if(isSuccess){
+      goToMessage();
+      form.resetForm();
+    }
+  }, [isSuccess])
 
   const form = useFormik({
     initialValues: {
@@ -91,7 +98,6 @@ onSubmit: (values) => {
     }
   })
 
-  goToMessage()
 }})
 
 
@@ -114,7 +120,7 @@ onSubmit: (values) => {
         <form onSubmit={form.handleSubmit} >
           {/* delivery addresss */}
           <CampoEndereco isVisible={mostrarEndereco} >
-            <TituloEntrega>Entrega</TituloEntrega>
+            <TituloEntrega>Entrega </TituloEntrega>
             <AreaPergunta>
               <label htmlFor="receptor">Quem ira receber</label>
               <input id="receptor" type="text" name="receptor" value={form.values.receptor} onChange={form.handleChange}
