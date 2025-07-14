@@ -7,7 +7,7 @@ type products = {
 }
 
 type PurchasePayload  = {
-product: products[]
+products: products[]
   delivery: {
     receiver: string
     address: {

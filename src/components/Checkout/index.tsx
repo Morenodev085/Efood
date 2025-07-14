@@ -71,7 +71,7 @@ const Checkout = () => {
       console.log('form errors', form.errors)
       console.log('Submitting:', values)
       purchease({
-        product: [{
+        products: [{
           id: 1,
           price: 10
         }],

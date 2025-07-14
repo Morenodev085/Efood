@@ -8,7 +8,7 @@ import { usePurcheaseMutation } from "../../services/api";
 
 
 const ClosingMessage = () => {
-    
+    const [purchase, {isSuccess, data}] = usePurcheaseMutation()
     const { isOpenMessage } = useSelector((state: RootReducer) => state.message);
     const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const ClosingMessage = () => {
             <Sidebar>
                 <Paragrafo>
                     <Title>
-                        Pedido realizado - 
+                        Pedido realizado - {data?.orderId ?? `carregando...`}
                     </Title>
                     <Text>
                         Estamos felizes em informar que seu pedido já está em processo de preparação e, em breve, será entregue no endereço fornecido.<br /><br />
