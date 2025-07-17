@@ -9,6 +9,7 @@ import { closeCheckout } from "../../store/reducers/checkout";
 import { useFormik } from "formik";
 import * as Yup from 'yup'
 import { usePurcheaseMutation } from "../../services/api";
+import { formataPreco } from "../Cart";
 
 const Checkout = () => {
   const { items } = useSelector((state: RootReducer) => state.cart);
@@ -83,134 +84,128 @@ const Checkout = () => {
             zipCode: values.cep,
             number: values.numero,
             complement: values.complemento
+          }
+        },
+        payment: {
+          card: {
+            name: values.nomeCartao,
+            number: values.numeroCartao,  // converter para number
+            code: Number(values.CVVNumber),       // converter para number
+            expires: {
+              month: Number(values.mesDoVencimento),  // converter para number
+              year: Number(values.anoDoVencimento)    // converter para number
+            }
+          }
+        }
+      })
+
     }
-  },
-    payment: {
-    card: {
-      name: values.nomeCartao,
-      number: values.numeroCartao,  // converter para number
-      code: Number(values.CVVNumber),       // converter para number
-      expires: {
-        month: Number(values.mesDoVencimento),  // converter para number
-        year: Number(values.anoDoVencimento)    // converter para number
-      }
-    }
-  }
   })
 
-}})
 
+  const getAllPrice = () => {
+    return items.reduce((acumulador, item) => acumulador + item.preco, 0);
+  };
 
-const getAllPrice = () => {
-  return items.reduce((acumulador, item) => acumulador + item.preco, 0);
-};
+  const checkInputHasError = (fieldName: string) => {
+    const isTouched = fieldName in form.touched
+    const isInvalid = fieldName in form.errors
+    const hasError = isTouched && isInvalid
 
-const getErrorMessage = (fieldName: string, massage?: string) => {
-  const isTouched = fieldName in form.touched
-  const isInvalid = fieldName in form.errors
+    return hasError
+  }
 
-  if (isTouched && isInvalid) return massage
-  return ''
-}
+  return (
+    <CheckoutConteiner className={isOpenCheckout ? 'isOpenCheckout' : ''} >
+      <Overlay onClick={closemodulo} />
+      <Sidebar>
+        <form onSubmit={form.handleSubmit} >
+          {/* delivery addresss */}
+          <CampoEndereco isVisible={mostrarEndereco} >
+            <TituloEntrega>Entrega </TituloEntrega>
+            <AreaPergunta>
+              <label htmlFor="receptor">Quem ira receber</label>
+              <input id="receptor" type="text" name="receptor" value={form.values.receptor} onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                className={checkInputHasError('receptor') ? 'error' : ''} />
+            </AreaPergunta>
+            <AreaPergunta>
+              <label htmlFor="endereco">Endereco</label>
+              <input id="endereco" type="text" name="endereco" value={form.values.endereco} onChange={form.handleChange}
+                onBlur={form.handleBlur} className={checkInputHasError('endereco') ? 'error' : ''}/>
+            </AreaPergunta>
+            <AreaPergunta>
+              <label htmlFor="cidade">Cidade</label>
+              <input id="cidade" type="text" name="cidade" value={form.values.cidade} onChange={form.handleChange}
+                onBlur={form.handleBlur} className={checkInputHasError('cidade') ? 'error' : ''}/>
+            </AreaPergunta>
+            <AreaPerguntaDupla>
+              <Campo>
+                <label htmlFor="cep">CEP</label>
+                <input id="cep" type="text" name="cep" value={form.values.cep} onChange={form.handleChange}
+                  onBlur={form.handleBlur} className={checkInputHasError('cep') ? 'error' : ''}/>
+              </Campo>
+              <Campo>
+                <label htmlFor="numero">Numero</label>
+                <input id="numero" type="number" name="numero" value={form.values.numero} onChange={form.handleChange}
+                  onBlur={form.handleBlur} className={checkInputHasError('numero') ? 'error' : ''}/>
+              </Campo>
+            </AreaPerguntaDupla>
+            <AreaPergunta>
+              <label htmlFor="complemento">Complemento (opcional)</label>
+              <input id="complemento" type="text" name="complemento" value={form.values.complemento} onChange={form.handleChange}
+                onBlur={form.handleBlur} className={checkInputHasError('complemento') ? 'error' : ''}/>
+            </AreaPergunta>
+            <CaixaDosBotoes>
+              <BotaoCardapio type="button" style={{ marginBottom: 8 }} onClick={alteraCampo} >Ir para pagamento</BotaoCardapio>
+              <BotaoCardapio onClick={closemodulo} >Voltar para o carrinho</BotaoCardapio>
+            </CaixaDosBotoes>
+          </CampoEndereco>
+          {/* Pay card */}
+          <CampoCartao isVisible={!mostrarEndereco}>
+            <TituloEntrega>Pagamento - Valor a pagar {formataPreco(getAllPrice())}</TituloEntrega>
+            <AreaPergunta>
+              <label htmlFor="nomeCartao">Nome do Cartão</label>
+              <input id="nomeCartao" type="text" name="nomeCartao" value={form.values.nomeCartao} onChange={form.handleChange}
+                onBlur={form.handleBlur} className={checkInputHasError('nomeCartao') ? 'error' : ''}/>
 
-return (
-  <CheckoutConteiner className={isOpenCheckout ? 'isOpenCheckout' : ''} >
-    <Overlay onClick={closemodulo} />
-    <Sidebar>
-      <form onSubmit={form.handleSubmit} >
-        {/* delivery addresss */}
-        <CampoEndereco isVisible={mostrarEndereco} >
-          <TituloEntrega>Entrega </TituloEntrega>
-          <AreaPergunta>
-            <label htmlFor="receptor">Quem ira receber</label>
-            <input id="receptor" type="text" name="receptor" value={form.values.receptor} onChange={form.handleChange}
-              onBlur={form.handleBlur} />
-            <small>{getErrorMessage('receptor', form.errors.receptor)}</small>
-          </AreaPergunta>
-          <AreaPergunta>
-            <label htmlFor="endereco">Endereco</label>
-            <input id="endereco" type="text" name="endereco" value={form.values.endereco} onChange={form.handleChange}
-              onBlur={form.handleBlur} />
-            <small>{getErrorMessage('endereco', form.errors.endereco)}</small>
-          </AreaPergunta>
-          <AreaPergunta>
-            <label htmlFor="cidade">Cidade</label>
-            <input id="cidade" type="text" name="cidade" value={form.values.cidade} onChange={form.handleChange}
-              onBlur={form.handleBlur} />
-            <small>{getErrorMessage('cidade', form.errors.cidade)}</small>
-          </AreaPergunta>
-          <AreaPerguntaDupla>
-            <Campo>
-              <label htmlFor="cep">CEP</label>
-              <input id="cep" type="text" name="cep" value={form.values.cep} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-              <small>{getErrorMessage('cep', form.errors.cep)}</small>
-            </Campo>
-            <Campo>
-              <label htmlFor="numero">Numero</label>
-              <input id="numero" type="number" name="numero" value={form.values.numero} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-              <small>{getErrorMessage('numero', form.errors.numero)}</small>
-            </Campo>
-          </AreaPerguntaDupla>
-          <AreaPergunta>
-            <label htmlFor="complemento">Complemento (opcional)</label>
-            <input id="complemento" type="text" name="complemento" value={form.values.complemento} onChange={form.handleChange}
-              onBlur={form.handleBlur} />
-          </AreaPergunta>
-          <CaixaDosBotoes>
-            <BotaoCardapio type="button" style={{ marginBottom: 8 }} onClick={alteraCampo}>Ir para pagamento</BotaoCardapio>
-            <BotaoCardapio onClick={closemodulo} >Voltar para o carrinho</BotaoCardapio>
-          </CaixaDosBotoes>
-        </CampoEndereco>
-        {/* Pay card */}
-        <CampoCartao isVisible={!mostrarEndereco}>
-          <TituloEntrega>Pagamento - Valor a pagar {getAllPrice().toFixed(2)}</TituloEntrega>
-          <AreaPergunta>
-            <label htmlFor="nomeCartao">Nome do Cartão</label>
-            <input id="nomeCartao" type="text" name="nomeCartao" value={form.values.nomeCartao} onChange={form.handleChange}
-              onBlur={form.handleBlur} />
-            <small>{getErrorMessage('nomeCartao', form.errors.nomeCartao)}</small>
-          </AreaPergunta>
-          <AreaPerguntaDupla>
-            <Campo>
-              <label htmlFor="numeroCartao">Número do cartão</label>
-              <input id="numeroCartao" type="text" name="numeroCartao" value={form.values.numeroCartao} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-              <small>{getErrorMessage('numeroCartao', form.errors.numeroCartao)}</small>
-            </Campo>
-            <Campo>
-              <label htmlFor="CVVNumber">CVV</label>
-              <input id="CVVNumber" type="text" name="CVVNumber" value={form.values.CVVNumber} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-              <small>{getErrorMessage('CVVNumber', form.errors.CVVNumber)}</small>
-            </Campo>
-          </AreaPerguntaDupla>
-          <AreaPerguntaDupla>
-            <Campo>
-              <label htmlFor="mesDoVencimento">Mês de vencimento</label>
-              <input id="mesDoVencimento" type="text" name="mesDoVencimento" value={form.values.mesDoVencimento} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-              <small>{getErrorMessage('mesDoVencimento', form.errors.mesDoVencimento)}</small>
-            </Campo>
-            <Campo>
-              <label htmlFor="anoDoVencimento">Ano de vencimento</label>
-              <input id="anoDoVencimento" type="text" name="anoDoVencimento" value={form.values.anoDoVencimento} onChange={form.handleChange}
-                onBlur={form.handleBlur} />
-              <small>{getErrorMessage('anoDoVencimento', form.errors.anoDoVencimento)}</small>
-            </Campo>
-          </AreaPerguntaDupla>
-          <CaixaDosBotoes>
-            <BotaoCardapio type="submit" style={{ marginBottom: 8 }} >
-              Finalizar pagamento
-            </BotaoCardapio>
-            <BotaoCardapio onClick={alteraCampo}>Voltar para a edição de endereço</BotaoCardapio>
-          </CaixaDosBotoes>
-        </CampoCartao>
-      </form>
-    </Sidebar >
-  </CheckoutConteiner >
-);
+            </AreaPergunta>
+            <AreaPerguntaDupla>
+              <Campo>
+                <label htmlFor="numeroCartao">Número do cartão</label>
+                <input id="numeroCartao" type="text" name="numeroCartao" value={form.values.numeroCartao} onChange={form.handleChange}
+                  onBlur={form.handleBlur} className={checkInputHasError('numeroCartao') ? 'error' : ''}/>
+
+              </Campo>
+              <Campo>
+                <label htmlFor="CVVNumber">CVV</label>
+                <input id="CVVNumber" type="text" name="CVVNumber" value={form.values.CVVNumber} onChange={form.handleChange}
+                  onBlur={form.handleBlur} className={checkInputHasError('CVVNumero') ? 'error' : ''}/>
+              </Campo>
+            </AreaPerguntaDupla>
+            <AreaPerguntaDupla>
+              <Campo>
+                <label htmlFor="mesDoVencimento">Mês de vencimento</label>
+                <input id="mesDoVencimento" type="text" name="mesDoVencimento" value={form.values.mesDoVencimento} onChange={form.handleChange}
+                  onBlur={form.handleBlur} className={checkInputHasError('mesDoVencimento') ? 'error' : ''}/>
+              </Campo>
+              <Campo>
+                <label htmlFor="anoDoVencimento">Ano de vencimento</label>
+                <input id="anoDoVencimento" type="text" name="anoDoVencimento" value={form.values.anoDoVencimento} onChange={form.handleChange}
+                  onBlur={form.handleBlur} className={checkInputHasError('anoDoVencimento') ? 'error' : ''}/>
+              </Campo>
+            </AreaPerguntaDupla>
+            <CaixaDosBotoes>
+              <BotaoCardapio type="submit" style={{ marginBottom: 8 }} >
+                Finalizar pagamento
+              </BotaoCardapio>
+              <BotaoCardapio onClick={alteraCampo}>Voltar para a edição de endereço</BotaoCardapio>
+            </CaixaDosBotoes>
+          </CampoCartao>
+        </form>
+      </Sidebar >
+    </CheckoutConteiner >
+  );
 };
 
 export default Checkout;

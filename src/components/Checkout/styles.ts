@@ -47,6 +47,10 @@ width: 344px;
 border: none;
 margin-top: 8px;
 background-color: ${cores.creme};
+
+&.error{
+  border: 1px solid red;
+}
 }
 `
 
@@ -56,9 +60,7 @@ display: flex;
 font-size: 14px;
 
 
-Campo{
 
-}
 input{
 height: 32px;
 width: 155px;
@@ -66,6 +68,10 @@ border: none;
 margin-top: 8px;
 background-color: ${cores.creme};
 padding: 8px;
+
+&.error{
+  border: 1px solid red;
+}
 }
 `
 
