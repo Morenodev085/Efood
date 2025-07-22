@@ -42,7 +42,7 @@ const Checkout = () => {
   };
 
   const goToMessage = () => {
-    dispatch(openMessage());
+    dispatch(openMessage({orderId: data.orderId }));
     closemodulo();
   };
 
