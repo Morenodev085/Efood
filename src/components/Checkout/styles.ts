@@ -49,7 +49,7 @@ margin-top: 8px;
 background-color: ${cores.creme};
 
 &.error{
-  border: 1px solid red;
+  border: 3px solid #800000;
 }
 }
 `
@@ -70,7 +70,7 @@ background-color: ${cores.creme};
 padding: 8px;
 
 &.error{
-  border: 1px solid red;
+  border: 1px solid #800000;
 }
 }
 `

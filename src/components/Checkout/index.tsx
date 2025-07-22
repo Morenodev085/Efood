@@ -7,39 +7,53 @@ import { AreaPergunta, AreaPerguntaDupla, CaixaDosBotoes, Campo, CampoCartao, Ca
 import { BotaoCardapio, Overlay, Sidebar } from "../../styles";
 import { closeCheckout } from "../../store/reducers/checkout";
 import { useFormik } from "formik";
-import * as Yup from 'yup'
+import * as Yup from 'yup';
 import { usePurcheaseMutation } from "../../services/api";
 import { formataPreco } from "../Cart";
 
+// Definindo o tipo dos valores do formulário para o TypeScript
+type FormValues = {
+  receptor: string;
+  endereco: string;
+  cidade: string;
+  cep: string;
+  numero: number;
+  complemento: string;
+  nomeCartao: string;
+  numeroCartao: string;
+  CVVNumber: string;
+  mesDoVencimento: string;
+  anoDoVencimento: string;
+};
+
 const Checkout = () => {
   const { items } = useSelector((state: RootReducer) => state.cart);
-  const [purchease, { isLoading, isError, data, isSuccess }] = usePurcheaseMutation()
+  const [purchease, { isLoading, isError, data, isSuccess }] = usePurcheaseMutation();
   const { isOpenCheckout } = useSelector((state: RootReducer) => state.checkout);
-  const [mostrarEndereco, setMostrarEndereco] = useState(true)
+  const [mostrarEndereco, setMostrarEndereco] = useState(true);
   const dispatch = useDispatch();
 
-
   const alteraCampo = () => {
-    setMostrarEndereco((prev) => !prev)
-  }
+    setMostrarEndereco((prev) => !prev);
+  };
 
   const closemodulo = () => {
-    dispatch(closeCheckout())
+    dispatch(closeCheckout());
   };
 
   const goToMessage = () => {
-    dispatch(openMessage())
-    closemodulo()
-  }
+    dispatch(openMessage());
+    closemodulo();
+  };
 
   useEffect(() => {
     if (isSuccess) {
       goToMessage();
       form.resetForm();
     }
-  }, [isSuccess])
+  }, [isSuccess]);
 
-  const form = useFormik({
+  const form = useFormik<FormValues>({
     initialValues: {
       receptor: '',
       endereco: '',
@@ -52,7 +66,6 @@ const Checkout = () => {
       CVVNumber: '',
       mesDoVencimento: '',
       anoDoVencimento: ''
-
     },
     validationSchema: Yup.object({
       receptor: Yup.string().min(3, 'O nome precisa ter pelo menos 3 caracteres').required('O campo é obrigatório'),
@@ -69,8 +82,8 @@ const Checkout = () => {
     }),
 
     onSubmit: (values) => {
-      console.log('form errors', form.errors)
-      console.log('Submitting:', values)
+      console.log('form errors', form.errors);
+      console.log('Submitting:', values);
       purchease({
         products: [{
           id: 1,
@@ -89,31 +102,38 @@ const Checkout = () => {
         payment: {
           card: {
             name: values.nomeCartao,
-            number: values.numeroCartao,  // converter para number
-            code: Number(values.CVVNumber),       // converter para number
+            number: values.numeroCartao,  // manter string porque pode começar com zero
+            code: Number(values.CVVNumber),
             expires: {
-              month: Number(values.mesDoVencimento),  // converter para number
-              year: Number(values.anoDoVencimento)    // converter para number
+              month: Number(values.mesDoVencimento),
+              year: Number(values.anoDoVencimento)
             }
           }
         }
-      })
-
-    }
-  })
-
+      });
+    },
+    validateOnMount: true
+  });
 
   const getAllPrice = () => {
     return items.reduce((acumulador, item) => acumulador + item.preco, 0);
   };
 
-  const checkInputHasError = (fieldName: string) => {
-    const isTouched = fieldName in form.touched
-    const isInvalid = fieldName in form.errors
-    const hasError = isTouched && isInvalid
+  // Função para verificar se o campo tem erro
+  const checkInputHasError = (fieldName: keyof FormValues) => {
+    const isTouched = form.touched[fieldName];
+    const isInvalid = form.errors[fieldName];
+    return !!isTouched && !!isInvalid;
+  };
 
-    return hasError
-  }
+  // Campos relacionados ao endereço
+  const camposEndereco: (keyof FormValues)[] = ['receptor', 'endereco', 'cidade', 'cep', 'numero'];
+
+  // Verifica se todos os campos do endereço são válidos e estão preenchidos
+  const isEnderecoValido = () =>
+    camposEndereco.every(campo =>
+      !checkInputHasError(campo) && !!form.values[campo]
+    );
 
   return (
     <CheckoutConteiner className={isOpenCheckout ? 'isOpenCheckout' : ''} >
@@ -132,32 +152,39 @@ const Checkout = () => {
             <AreaPergunta>
               <label htmlFor="endereco">Endereco</label>
               <input id="endereco" type="text" name="endereco" value={form.values.endereco} onChange={form.handleChange}
-                onBlur={form.handleBlur} className={checkInputHasError('endereco') ? 'error' : ''}/>
+                onBlur={form.handleBlur} className={checkInputHasError('endereco') ? 'error' : ''} />
             </AreaPergunta>
             <AreaPergunta>
               <label htmlFor="cidade">Cidade</label>
               <input id="cidade" type="text" name="cidade" value={form.values.cidade} onChange={form.handleChange}
-                onBlur={form.handleBlur} className={checkInputHasError('cidade') ? 'error' : ''}/>
+                onBlur={form.handleBlur} className={checkInputHasError('cidade') ? 'error' : ''} />
             </AreaPergunta>
             <AreaPerguntaDupla>
               <Campo>
                 <label htmlFor="cep">CEP</label>
                 <input id="cep" type="text" name="cep" value={form.values.cep} onChange={form.handleChange}
-                  onBlur={form.handleBlur} className={checkInputHasError('cep') ? 'error' : ''}/>
+                  onBlur={form.handleBlur} className={checkInputHasError('cep') ? 'error' : ''} />
               </Campo>
               <Campo>
                 <label htmlFor="numero">Numero</label>
                 <input id="numero" type="number" name="numero" value={form.values.numero} onChange={form.handleChange}
-                  onBlur={form.handleBlur} className={checkInputHasError('numero') ? 'error' : ''}/>
+                  onBlur={form.handleBlur} className={checkInputHasError('numero') ? 'error' : ''} />
               </Campo>
             </AreaPerguntaDupla>
             <AreaPergunta>
               <label htmlFor="complemento">Complemento (opcional)</label>
               <input id="complemento" type="text" name="complemento" value={form.values.complemento} onChange={form.handleChange}
-                onBlur={form.handleBlur} className={checkInputHasError('complemento') ? 'error' : ''}/>
+                onBlur={form.handleBlur} className={checkInputHasError('complemento') ? 'error' : ''} />
             </AreaPergunta>
             <CaixaDosBotoes>
-              <BotaoCardapio type="button" style={{ marginBottom: 8 }} onClick={alteraCampo} >Ir para pagamento</BotaoCardapio>
+              <BotaoCardapio
+                type="button"
+                onClick={alteraCampo}
+                disabled={!isEnderecoValido()}
+                style={{ marginBottom: 8 }}
+              >
+                Ir para pagamento
+              </BotaoCardapio>
               <BotaoCardapio onClick={closemodulo} >Voltar para o carrinho</BotaoCardapio>
             </CaixaDosBotoes>
           </CampoEndereco>
@@ -167,32 +194,32 @@ const Checkout = () => {
             <AreaPergunta>
               <label htmlFor="nomeCartao">Nome do Cartão</label>
               <input id="nomeCartao" type="text" name="nomeCartao" value={form.values.nomeCartao} onChange={form.handleChange}
-                onBlur={form.handleBlur} className={checkInputHasError('nomeCartao') ? 'error' : ''}/>
+                onBlur={form.handleBlur} className={checkInputHasError('nomeCartao') ? 'error' : ''} />
 
             </AreaPergunta>
             <AreaPerguntaDupla>
               <Campo>
                 <label htmlFor="numeroCartao">Número do cartão</label>
                 <input id="numeroCartao" type="text" name="numeroCartao" value={form.values.numeroCartao} onChange={form.handleChange}
-                  onBlur={form.handleBlur} className={checkInputHasError('numeroCartao') ? 'error' : ''}/>
+                  onBlur={form.handleBlur} className={checkInputHasError('numeroCartao') ? 'error' : ''} />
 
               </Campo>
               <Campo>
                 <label htmlFor="CVVNumber">CVV</label>
                 <input id="CVVNumber" type="text" name="CVVNumber" value={form.values.CVVNumber} onChange={form.handleChange}
-                  onBlur={form.handleBlur} className={checkInputHasError('CVVNumero') ? 'error' : ''}/>
+                  onBlur={form.handleBlur} className={checkInputHasError('CVVNumber') ? 'error' : ''} />
               </Campo>
             </AreaPerguntaDupla>
             <AreaPerguntaDupla>
               <Campo>
                 <label htmlFor="mesDoVencimento">Mês de vencimento</label>
                 <input id="mesDoVencimento" type="text" name="mesDoVencimento" value={form.values.mesDoVencimento} onChange={form.handleChange}
-                  onBlur={form.handleBlur} className={checkInputHasError('mesDoVencimento') ? 'error' : ''}/>
+                  onBlur={form.handleBlur} className={checkInputHasError('mesDoVencimento') ? 'error' : ''} />
               </Campo>
               <Campo>
                 <label htmlFor="anoDoVencimento">Ano de vencimento</label>
                 <input id="anoDoVencimento" type="text" name="anoDoVencimento" value={form.values.anoDoVencimento} onChange={form.handleChange}
-                  onBlur={form.handleBlur} className={checkInputHasError('anoDoVencimento') ? 'error' : ''}/>
+                  onBlur={form.handleBlur} className={checkInputHasError('anoDoVencimento') ? 'error' : ''} />
               </Campo>
             </AreaPerguntaDupla>
             <CaixaDosBotoes>

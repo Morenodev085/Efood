@@ -8,7 +8,7 @@ import { usePurcheaseMutation } from "../../services/api";
 
 
 const ClosingMessage = () => {
-    const [purchase, {isSuccess, data}] = usePurcheaseMutation()
+    const [purchase, {data}] = usePurcheaseMutation()
     const { isOpenMessage } = useSelector((state: RootReducer) => state.message);
     const dispatch = useDispatch();
 
